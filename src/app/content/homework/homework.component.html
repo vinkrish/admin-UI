@@ -1,0 +1,55 @@
+<ul class="breadcrumb">
+    <li class="active">Homework</li>
+</ul>
+<form (ngSubmit)="fetchHomeworks()" #homeworkForm="ngForm">
+    <div class="form-group row">
+        <label for="className" class="col-md-2">Select Class :</label>
+        <select name="className" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+            <option *ngFor="let classs of classes" value={{classs.id}}>{{classs.className}}</option>
+        </select>
+    </div>
+    <div class="form-group row">
+        <label for="sectionName" class="col-md-2">Select Section :</label>
+        <select name="sectionName" required [(ngModel)]="selectedSection.id" (change)="sectionSelected($event.target.value)">
+            <option *ngFor="let section of sections" value={{section.id}}>{{section.sectionName}}</option>
+        </select>
+    </div>
+    <div class="form-group row">
+        <label for="date" class="col-md-2">Date :</label>
+        <input type="date" name="date" required [(ngModel)]="homeworkDate" placeholder="Homework Date" />
+        <button type="submit" class="btn btn-normal btn-md">Fetch Homework</button>
+    </div>
+</form>
+<div class="row col-md-10">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>SubjectName</th>
+                <th>Homework</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let homework of homeworks">
+                <td class="col-xs-4">{{homework.subjectName}}</td>
+                <td class="col-xs-4">
+                    <textarea class="form-control" rows="4" [(ngModel)]="homework.homeworkMessage"></textarea>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="save(homework, $event)">
+                        save
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(homework, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>

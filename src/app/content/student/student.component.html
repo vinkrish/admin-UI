@@ -1,0 +1,57 @@
+<ul class="breadcrumb">
+    <li class="active">Student</li>
+</ul>
+<div>
+    <label>Select Class: </label>
+    <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+        <option *ngFor="let classs of classes" value={{classs.id}}>{{classs.className}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label>Select Section: </label>
+    <select [(ngModel)]="selectedSection.id" (change)="sectionSelected($event.target.value)">
+        <option *ngFor="let section of sections" value={{section.id}}>{{section.sectionName}}</option>
+    </select>
+</div>
+<div class="row col-md-12">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Father's Name</th>
+                <th>Mother's Name</th>
+                <th>Mobile</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students" (click)="onSelect(student)" [class.selected]="student === selectedStudent">
+                <td class="col-xs-1">{{student.rollNo}}</td>
+                <td class="col-xs-3">{{student.studentName}}</td>
+                <td class="col-xs-2">{{student.fatherName}}</td>
+                <td class="col-xs-2">{{student.motherName}}</td>
+                <td class="col-xs-2">{{student.mobile1}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(student, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteStudent(student, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addStudent()">Add New </button>
+<div *ngIf="addingStudent">
+    <ui-student-detail (close)="close($event)"></ui-student-detail>
+</div>

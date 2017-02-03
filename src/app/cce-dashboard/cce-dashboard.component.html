@@ -1,0 +1,28 @@
+<div>
+    <div class="grid grid-pad">
+        <div *ngFor="let item of Items1" (click)="gotoDetail(item.link)" class="col-1-4">
+            <div class="module hero">
+                <h5>{{item.name}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <hr>
+    <div class="grid grid-pad">
+        <div *ngFor="let item of Items2" (click)="gotoDetail(item.link)" class="col-1-4">
+            <div class="module hero">
+                <h5>{{item.name}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <hr>
+    <div class="grid grid-pad">
+        <div *ngFor="let item of Items3" (click)="gotoDetail(item.link)" class="col-1-4">
+            <div class="module hero">
+                <h5>{{item.name}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

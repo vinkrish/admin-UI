@@ -1,0 +1,64 @@
+<ul class="breadcrumb">
+    <li class="active">Exam Subject Group</li>
+</ul>
+<div>
+    <label>Class: </label>
+    <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+        <option *ngFor="let clas of classes" value={{clas.id}}>{{clas.className}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label>Exam: </label>
+    <select [(ngModel)]="selectedExam.id" (change)="examSelected($event.target.value)">
+        <option *ngFor="let exam of exams" value={{exam.id}}>{{exam.examName}}</option>
+    </select>
+</div>
+<div class="row col-md-5">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let esg of examSubjectGroups" (click)="onSelect(esg)" [class.selected]="esg === selectedEsg">
+                <td class="col-xs-3">{{esg.subjectGroupName}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(esg, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
+<div *ngIf="addingEsg">
+    <div *ngIf="examSubjectGroup">
+    <h3>Exam Subject Group Details</h3>
+    <br/>
+    <div class="form-group row">
+        <label class="col-xs-2">Class:</label>
+        {{selectedClass.className}} 
+    </div>
+    <div class="form-group row">
+        <label class="col-xs-2">Exam:</label>
+        {{selectedExam.examName}}
+    </div>
+    <div class="form-group row">
+        <label class="col-xs-2">Subject Group: </label>
+        <div class="col-xs-4">
+        <select class="form-control"  required [(ngModel)]="examSubjectGroup.subjectGroupId" (change)="csgSelected($event.target.value)">
+            <option *ngFor="let csg of classSubjectGroups" value={{csg.subjectGroupId}}>{{csg.subjectGroupName}}</option>
+        </select>
+        </div>
+    </div>
+    <button class="btn btn-normal btn-md" (click)="close()">Back</button>
+    <button class="btn btn-success btn-md" (click)="save()">Save</button>
+</div>
+</div>

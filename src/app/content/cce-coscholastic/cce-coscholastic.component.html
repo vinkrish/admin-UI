@@ -1,0 +1,36 @@
+<ul class="breadcrumb">
+    <li class="active">CCE Coscholastic</li>
+</ul>
+<div class="row col-md-7">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cosch of cceCoschs" (click)="onSelect(cosch)" [class.selected]="cosch === selectedCceCosch">
+                <td class="col-xs-3">{{cosch.name}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(cosch, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteCosch(cosch, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addCosch()">Add New </button>
+<div *ngIf="addingCceCosch">
+    <ui-cce-coscholastic-detail (close)="close($event)"></ui-cce-coscholastic-detail>
+</div>

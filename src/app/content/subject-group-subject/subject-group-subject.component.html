@@ -1,0 +1,36 @@
+<ul class="breadcrumb">
+    <li class="active">Subject Group Subject</li>
+</ul>
+<div>
+    <label>Subject Group: </label>
+    <select [(ngModel)]="selectedSubjectGroup.id" (change)="subjectGroupSelected($event.target.value)">
+        <option *ngFor="let subjectGroup of subjectGroups" value={{subjectGroup.id}}>{{subjectGroup.subjectGroupName}}</option>
+    </select>
+</div>
+<div class="row col-md-5">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sgs of subjectGroupSubjects" (click)="onSelect(sgs)" [class.selected]="sgs === selectedSGS">
+                <td class="col-xs-4">{{sgs.subjectName}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteSubjectGroupSubject(sgs, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addSubjectGroupSubject()">Add New </button>
+<div *ngIf="addingSGS">
+    <ui-sgs-detail (close)="close($event)"></ui-sgs-detail>
+</div>

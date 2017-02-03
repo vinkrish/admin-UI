@@ -1,0 +1,36 @@
+<ul class="breadcrumb">
+    <li class="active">Subject</li>
+</ul>
+<div class="row col-md-6">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sub of subjects" (click)="onSelect(sub)" [class.selected]="sub === selectedSubject">
+                <td class="col-xs-4">{{sub.subjectName}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(sub, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteSubject(sub, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addSubject()">Add New </button>
+<div *ngIf="addingSubject">
+    <ui-subjects-detail (close)="close($event)"></ui-subjects-detail>
+</div>

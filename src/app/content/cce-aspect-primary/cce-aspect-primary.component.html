@@ -1,0 +1,91 @@
+<ul class="breadcrumb">
+    <li class="active">CCE Aspect Primary</li>
+</ul>
+<form #aspectPrimaryForm="ngForm">
+<div>
+    <label class="col-md-2">Coscholastic: </label>
+    <select name="coschName" [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
+        <option *ngFor="let cosch of coscholastics" value={{cosch.id}}>{{cosch.name}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label class="col-md-2">Section Heading: </label>
+    <select name="secHeadName" [(ngModel)]="selectedSectionHeading.id" (change)="sectionHeadingSelected($event.target.value)">
+        <option *ngFor="let secHead of sectionHeadings" value={{secHead.id}}>{{secHead.name}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label for="topicName" class="col-md-2">Topic: </label>
+    <select name="topicName" name="topicName" [(ngModel)]="selectedTopicPrimary.id" (change)="topicSelected($event.target.value)">
+        <option *ngFor="let topic of topicPrimarys" value={{topic.id}}>{{topic.name}}</option>
+    </select>
+</div>
+</form>
+<div class="row col-md-6">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aspect of aspects" (click)="onSelect(aspect)" [class.selected]="aspect === selectedAspect">
+                <td class="col-xs-4"><input [(ngModel)]="aspect.name"/></td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(aspect, $event)">
+                        update
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteAspect(aspect, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="add()">Add New </button>
+
+<div *ngIf="addingAspect">
+    <div *ngIf="aspectPrimary">
+    <h3>CCE Aspect Primary Details</h3>
+    <br/>
+    <form (ngSubmit)="save()" #classForm="ngForm">
+        <div class="form-group row">
+            <label for="name" class="col-md-2">Name :</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="aspectPrimary.name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="coschName" class="col-md-2">Coscholastic Name :</label>
+            <div class="col-md-4">
+                {{selectedCosch.name}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="secHeadName" class="col-md-2">Section Heading Name :</label>
+            <div class="col-md-4">
+                {{selectedSectionHeading.name}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="topicName" class="col-md-2">Topic Primary Name :</label>
+            <div class="col-md-4">
+                {{selectedTopicPrimary.name}}
+            </div>
+        </div>
+        <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+    <br/>
+</div>
+</div>

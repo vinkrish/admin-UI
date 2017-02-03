@@ -1,0 +1,38 @@
+<ul class="breadcrumb">
+    <li class="active">Teacher</li>
+</ul>
+<div class="row col-md-11">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Mobile</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let teacher of teachers" (click)="onSelect(teacher)" [class.selected]="teacher === selectedTeacher">
+                <td class="col-xs-3">{{teacher.teacherName}}</td>
+                <td class="col-xs-2">{{teacher.username}}</td>
+                <td class="col-xs-2">{{teacher.password}}</td>
+                <td class="col-xs-2">{{teacher.mobile}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(teacher, $event)">edit</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteTeacher(teacher, $event)">delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addTeacher()">Add New</button>
+<div *ngIf="addingTeacher">
+    <ui-teacher-detail (close)="close($event)"></ui-teacher-detail>
+</div>

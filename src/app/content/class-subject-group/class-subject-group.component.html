@@ -1,0 +1,36 @@
+<ul class="breadcrumb">
+    <li class="active">Class Subject Group</li>
+</ul>
+<div>
+    <label>Class: </label>
+    <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+        <option *ngFor="let clas of classes" value={{clas.id}}>{{clas.className}}</option>
+    </select>
+</div>
+<div class="row col-md-5">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let csg of clasSubjectGroups" (click)="onSelect(csg)" [class.selected]="csg === selectedCSG">
+                <td class="col-ms-4">{{csg.subjectGroupName}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteCSG(csg, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addCSG()">Add New </button>
+<div *ngIf="addingCSG">
+    <ui-csg-detail (close)="close($event)"></ui-csg-detail>
+</div>

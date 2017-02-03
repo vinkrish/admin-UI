@@ -1,0 +1,51 @@
+<ul class="breadcrumb">
+    <li class="active">CCE Topic Primary</li>
+</ul>
+<form #topicPrimaryForm="ngForm">
+<div>
+    <label class="col-md-2">Coscholastic: </label>
+    <select name="coschName" [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
+        <option *ngFor="let cosch of coscholastics" value={{cosch.id}}>{{cosch.name}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label class="col-md-2">Section Heading: </label>
+    <select name="secHeadName" [(ngModel)]="selectedSectionHeading.id" (change)="sectionHeadingSelected($event.target.value)">
+        <option *ngFor="let secHead of sectionHeadings" value={{secHead.id}}>{{secHead.name}}</option>
+    </select>
+</div>
+</form>
+<div class="row col-md-6">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let topicPrimary of topicPrimarys" (click)="onSelect(topicPrimary)" [class.selected]="topicPrimary === selectedTopicPrimary">
+                <td class="col-xs-4">{{topicPrimary.name}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(topicPrimary, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteTopicPrimary(topicPrimary, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addTopicPrimary()">Add New </button>
+<div *ngIf="addingTopicPrimary">
+    <ui-cce-topic-primary-detail (close)="close($event)"></ui-cce-topic-primary-detail>
+</div>

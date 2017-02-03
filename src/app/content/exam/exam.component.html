@@ -1,0 +1,48 @@
+<ul class="breadcrumb">
+    <li class="active">Exam</li>
+</ul>
+<div>
+    <label>Class: </label>
+    <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+        <option *ngFor="let clas of classes" value={{clas.id}}>{{clas.className}}</option>
+    </select>
+</div>
+<div class="row col-md-5">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th>Term</th>
+                <th>Type</th>
+                <th>Percentage</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let exam of exams" (click)="onSelect(exam)" [class.selected]="exam === selectedExam">
+                <td class="col-xs-3">{{exam.examName}}</td>
+                <td class="col-xs-1">{{exam.term}}</td>
+                <td class="col-xs-1">{{exam.type}}</td>
+                <td class="col-xs-1">{{exam.percentage}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(exam, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteExam(exam, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addExam()">Add New </button>
+<div *ngIf="addingExam">
+    <ui-exam-detail (close)="close($event)"></ui-exam-detail>
+</div>

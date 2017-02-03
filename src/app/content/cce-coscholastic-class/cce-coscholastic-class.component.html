@@ -1,0 +1,36 @@
+<ul class="breadcrumb">
+    <li class="active">CCE Coscholastic Class</li>
+</ul>
+<div>
+    <label>Coscholastic: </label>
+    <select [(ngModel)]="selectedCosch.id" (change)="coSchSelected($event.target.value)">
+        <option *ngFor="let cceCosch of cceCoscholastics" value={{cceCosch.id}}>{{cceCosch.name}}</option>
+    </select>
+</div>
+<div class="row col-md-5">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ccc of cceCoschClasses" (click)="onSelect(ccc)" [class.selected]="ccc === selectedCCC">
+                <td class="col-xs-4">{{ccc.className}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteCceCoschClass(ccc, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addCceCoschClass()">Add New </button>
+<div *ngIf="addingCCC">
+    <ui-ccc-detail (close)="close($event)"></ui-ccc-detail>
+</div>

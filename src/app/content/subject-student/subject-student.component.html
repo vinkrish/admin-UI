@@ -1,0 +1,63 @@
+<ul class="breadcrumb">
+    <li class="active">Subject Student</li>
+</ul>
+<div class="form-group row">
+    <label for="clas" class="col-md-2">Class :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="clas" name="clas" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+            <option *ngFor="let classs of classes" [value]="classs.id">{{classs.className}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="sec" class="col-md-2">Section :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="sec" name="sec" required [(ngModel)]="selectedSection.id" (change)="sectionSelected($event.target.value)">
+            <option *ngFor="let section of sections" [value]="section.id">{{section.sectionName}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="subjectgroup" class="col-md-2">Subject-Group :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="subjectgroup" name="subjectgroup" required [(ngModel)]="selectedCSG.subjectGroupId" (change)="subjectGroupSelected($event.target.value)">
+            <option *ngFor="let csg of clasSubjectGroups" [value]="csg.subjectGroupId">{{csg.subjectGroupName}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="sgss" class="col-md-2">Select for all:</label>
+    <div class="col-md-4">
+        <select class="form-control" id="sgss" name="sgss" [(ngModel)]="selectedSGS.subjectId" required (change)="subjectGroupSubjectSelected($event.target.value)">
+            <option *ngFor="let sgss of subjectGroupSubjects" [value]="sgss.subjectId">{{sgss.subjectName}}</option>
+        </select>
+    </div>
+</div>
+<div class="row col-md-7">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ss of ssList">
+                <td class="col-xs-1">{{ss.rollNo}}</td>
+                <td class="col-xs-3">{{ss.studentName}}</td>
+                <td class="col-xs-3">
+                    <div class="radio" *ngFor="let sgs of subjectGroupSubjects">
+                        <label>
+                            <input type="radio" [(ngModel)]="ss.subjectId" [value]="sgs.subjectId"> {{sgs.subjectName}}
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="updateMapping()">Update</button>

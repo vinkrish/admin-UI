@@ -1,0 +1,24 @@
+<div *ngIf="cceCoschClass">
+    <br>
+    <h3>CCE Coscholastic Class Details</h3>
+    <br/>
+    <form (ngSubmit)="save()" #classForm="ngForm">
+        <div class="form-group row">
+            <label for="name" class="col-md-2">Co Scholastic :</label>
+            <div class="col-md-4">
+                {{coScholasticName}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="classs" class="col-md-2">Class :</label>
+            <div class="col-md-4">
+                <select class="form-control" id="classs" name="classs" required [(ngModel)]="cceCoschClass.classId" (change)="classSelected($event.target.value)">
+                    <option *ngFor="let classs of classes" [value]="classs.id">{{classs.className}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+    <br/>
+</div>

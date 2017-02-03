@@ -2,19 +2,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
+import 'hammerjs';
+import { routing } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { myComponents } from './external.module';
+import { myServices } from './external.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [...myComponents],
   imports: [
+    routing,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [...myServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
