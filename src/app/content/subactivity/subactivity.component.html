@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Sub-Activity</li>
-</ul>
+<div>
+<md-toolbar color="primary">Sub-Activity</md-toolbar>
+<br>
 <div class="form-group row">
     <label class="col-md-1">Class: </label>
     <div class="col-md-4">
@@ -41,10 +41,10 @@
     </select>
     </div>
 </div>
-<div class="row col-md-12">
-    <table class="table table-bordered table-striped">
+<div>
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Max Mark</th>
@@ -56,25 +56,25 @@
         </thead>
         <tbody>
             <tr *ngFor="let subact of subActivities" (click)="onSelect(subact)" [class.selected]="subact === selecteSubdActivity">
-                <td class="col-xs-4">
+                <td>
                     <input [(ngModel)]="subact.subActivityName"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="subact.maximumMark"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="subact.weightage"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="subact.calculation"/>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(subact, $event)">
+                    <button type="button" md-button color="primary" (click)="update(subact, $event)">
                         update
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(subact, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(subact, $event)">
                         delete
                     </button>
                 </td>
@@ -85,12 +85,13 @@
 <div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
-
+</div>
 <div *ngIf="addingSubActivity">
     <div *ngIf="subActivity">
-    <h3>Sub-Activity Details</h3>
+    <br>
+    <md-toolbar color="primary">New Sub-Activity</md-toolbar>
     <br/>
-    <form (ngSubmit)="save()" #examForm="ngForm">
+    <form (ngSubmit)="save()" #form="ngForm">
         <div class="form-group row">
             <label for="className" class="col-md-1">Class :</label>
             <div class="col-md-4">

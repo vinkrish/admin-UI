@@ -1,7 +1,7 @@
-<ul class="breadcrumb">
-    <li class="active">CCE Aspect Primary</li>
-</ul>
-<form #aspectPrimaryForm="ngForm">
+<div>
+<md-toolbar color="primary">CCE Aspect Primary</md-toolbar>
+<br>
+<form #form="ngForm">
 <div>
     <label class="col-md-2">Coscholastic: </label>
     <select name="coschName" [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
@@ -23,8 +23,9 @@
     </select>
 </div>
 </form>
-<div class="row col-md-6">
-    <table class="table table-bordered table-striped">
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
         <thead>
             <tr>
@@ -35,14 +36,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let aspect of aspects" (click)="onSelect(aspect)" [class.selected]="aspect === selectedAspect">
-                <td class="col-xs-4"><input [(ngModel)]="aspect.name"/></td>
+                <td class="col-md-4"><input [(ngModel)]="aspect.name"/></td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(aspect, $event)">
+                    <button type="button" md-button color="primary" (click)="update(aspect, $event)">
                         update
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteAspect(aspect, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteAspect(aspect, $event)">
                         delete
                     </button>
                 </td>
@@ -50,13 +51,13 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add New </button>
-
+</div>
 <div *ngIf="addingAspect">
+    <br>
     <div *ngIf="aspectPrimary">
-    <h3>CCE Aspect Primary Details</h3>
+    <md-toolbar color="primary">CCE Aspect Primary Details</md-toolbar>
     <br/>
     <form (ngSubmit)="save()" #classForm="ngForm">
         <div class="form-group row">

@@ -1,7 +1,7 @@
-<ul class="breadcrumb">
-    <li class="active">Homework</li>
-</ul>
-<form (ngSubmit)="fetchHomeworks()" #homeworkForm="ngForm">
+<div>
+<md-toolbar color="primary">Homework</md-toolbar>
+<br>
+<form (ngSubmit)="fetchHomeworks()" #form="ngForm">
     <div class="form-group row">
         <label for="className" class="col-md-2">Select Class :</label>
         <select name="className" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
@@ -20,10 +20,10 @@
         <button type="submit" class="btn btn-normal btn-md">Fetch Homework</button>
     </div>
 </form>
-<div class="row col-md-10">
-    <table class="table table-bordered table-striped">
+<div class="col-md-9">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>SubjectName</th>
                 <th>Homework</th>
@@ -33,17 +33,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let homework of homeworks">
-                <td class="col-xs-4">{{homework.subjectName}}</td>
-                <td class="col-xs-4">
+                <td>{{homework.subjectName}}</td>
+                <td>
                     <textarea class="form-control" rows="4" [(ngModel)]="homework.homeworkMessage"></textarea>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="save(homework, $event)">
+                    <button type="button" md-button color="primary" (click)="save(homework, $event)">
                         save
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(homework, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(homework, $event)">
                         delete
                     </button>
                 </td>
@@ -51,5 +51,5 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
+</div>

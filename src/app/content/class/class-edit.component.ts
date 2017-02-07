@@ -55,7 +55,7 @@ export class ClassEditComponent implements OnInit, OnDestroy {
       .catch(error => this.error = error);
   }
 
-  goBack(savedClas: Clas = null) {
+  goBack(savedClas: Clas = this.clas) {
     this.close.emit(savedClas);
     if (this.navigated) { window.history.back(); }
   }

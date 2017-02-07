@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Sliptest</li>
-</ul>
+<div>
+<md-toolbar color="primary">Sliptest</md-toolbar>
+<br>
 <div class="form-group row">
     <label for="clas" class="col-md-2">Class :</label>
     <div class="col-md-4">
@@ -33,10 +33,10 @@
         </select>
     </div>
 </div>
-<div *ngIf="selectedSGS" class="row col-md-6">
-    <table class="table table-bordered table-striped">
+<div *ngIf="selectedSGS" class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th></th>
@@ -45,14 +45,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let slip of sliptests" (click)="onSelect(slip)" [class.selected]="slip === selectedPortion">
-                <td class="col-xs-4">{{slip.sliptestName}}</td>
+                <td class="col-md-4">{{slip.sliptestName}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(slip, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(slip, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deletePortion(slip, $event)">
+                    <button type="button" md-button color="accent" (click)="deletePortion(slip, $event)">
                         delete
                     </button>
                 </td>
@@ -60,9 +60,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addSliptest()">Add New</button>
+</div>
 <div *ngIf="addingSliptest">
     <ui-sliptest-detail (close)="close($event)"></ui-sliptest-detail>
 </div>

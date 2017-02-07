@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Exam Subject</li>
-</ul>
+<div>
+<md-toolbar color="primary">Exam Subject</md-toolbar>
+<br>
 <form>
 <div>
     <label class="col-md-2">Class: </label>
@@ -23,10 +23,11 @@
     </select>
 </div>
 </form>
-<div class="row col-md-12">
-    <table class="table table-bordered table-striped">
+<br>
+<div>
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Max Mark</th>
@@ -38,23 +39,23 @@
         </thead>
         <tbody>
             <tr *ngFor="let exmSubject of examSubjects" (click)="onSelect(exmSubject)" [class.selected]="exmSubject === selectedExamSubject">
-                <td class="col-xs-4">{{exmSubject.subjectName}}</td>
-                <td class="col-xs-2">
+                <td>{{exmSubject.subjectName}}</td>
+                <td>
                     <input [(ngModel)]="exmSubject.maximumMark" placeholder="Max Mark" />
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="exmSubject.failMark" placeholder="Fail Mark" />
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="exmSubject.percentage" placeholder="%" />
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(exmSubject, $event)">
+                    <button type="button" md-button color="primary" (click)="update(exmSubject, $event)">
                         update
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(exmSubject, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(exmSubject, $event)">
                         delete
                     </button>
                 </td>
@@ -62,13 +63,15 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
 <button *ngIf="isPartitionSubject" type="button" class="btn btn-success btn-md" (click)="enablePartition()">Partition Subjects</button>
+</div>
 <div *ngIf="addingExamSubject">
     <div *ngIf="examSubject">
-    <h3>Exam Subject Details</h3>
+    <br>
+    <md-toolbar color="primary">New Exam Subject</md-toolbar>
+    <br>
     <div class="form-group row">
         <label class="col-md-2">Class:</label>
         {{selectedClass.className}}

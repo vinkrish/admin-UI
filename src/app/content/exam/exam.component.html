@@ -1,16 +1,16 @@
-<ul class="breadcrumb">
-    <li class="active">Exam</li>
-</ul>
+<div>
+<md-toolbar color="primary">Exam</md-toolbar>
+<br>
 <div>
     <label>Class: </label>
     <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
         <option *ngFor="let clas of classes" value={{clas.id}}>{{clas.className}}</option>
     </select>
 </div>
-<div class="row col-md-5">
-    <table class="table table-bordered table-striped">
+<div class="col-md-8">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Term</th>
@@ -22,17 +22,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let exam of exams" (click)="onSelect(exam)" [class.selected]="exam === selectedExam">
-                <td class="col-xs-3">{{exam.examName}}</td>
-                <td class="col-xs-1">{{exam.term}}</td>
-                <td class="col-xs-1">{{exam.type}}</td>
-                <td class="col-xs-1">{{exam.percentage}}</td>
+                <td>{{exam.examName}}</td>
+                <td>{{exam.term}}</td>
+                <td>{{exam.type}}</td>
+                <td>{{exam.percentage}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(exam, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(exam, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteExam(exam, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteExam(exam, $event)">
                         delete
                     </button>
                 </td>
@@ -40,9 +40,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addExam()">Add New </button>
+</div>
 <div *ngIf="addingExam">
     <ui-exam-detail (close)="close($event)"></ui-exam-detail>
 </div>

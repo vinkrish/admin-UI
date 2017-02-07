@@ -1,8 +1,8 @@
 <div *ngIf="topicPrimary">
     <br>
-    <h3>CCE Topic Primary Details</h3>
+    <md-toolbar color="primary">CCE Topic Primary Details</md-toolbar>
     <br/>
-    <form (ngSubmit)="save()" #classForm="ngForm">
+    <form (ngSubmit)="save()" #form="ngForm">
         <div class="form-group row">
             <label for="name" class="col-md-2">Name :</label>
             <div class="col-md-4">

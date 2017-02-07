@@ -1,7 +1,7 @@
-<ul class="breadcrumb">
-    <li class="active">Attendance</li>
-</ul>
-<form (ngSubmit)="fetchSessionAttendance()" #attendanceForm="ngForm">
+<div>
+<md-toolbar color="primary">Attendance</md-toolbar>
+<br>
+<form (ngSubmit)="fetchSessionAttendance()" #form="ngForm">
     <div>
         <label for="className" class="col-md-2">Select Class :</label>
         <select name="className" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
@@ -43,10 +43,10 @@
     </div>
 </form>
 <h3>Marked</h3>
-<div class="row col-md-5">
-    <table class="table table-bordered table-striped">
+<div class="col-md-8">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Student</th>
                 <th>Attendance</th>
@@ -55,10 +55,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let attendance of markedAttendances">
-                <td class="col-xs-3">{{attendance.studentName}}</td>
-                <td class="col-xs-2">{{attendance.typeOfLeave}}</td>
+                <td>{{attendance.studentName}}</td>
+                <td>{{attendance.typeOfLeave}}</td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(attendance, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(attendance, $event)">
                         delete
                     </button>
                 </td>
@@ -68,7 +68,7 @@
 </div>
 <div class="clearfix"></div>
 <h3>UnMarked</h3>
-<div class="row col-md-5">
+<div class="col-md-6">
     <table class="table table-bordered table-striped">
         <caption></caption>
         <thead>
@@ -79,8 +79,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let attendance of unmarkedAttendances">
-                <td class="col-md-3">{{attendance.studentName}}</td>
-                <td class="col-md-2">
+                <td>{{attendance.studentName}}</td>
+                <td>
                     <select [(ngModel)]="attendance.typeOfLeave">
                         <option *ngFor="let leaveType of leaveTypes" value={{leaveType.type}}>{{leaveType.type}}</option>
                     </select>
@@ -89,6 +89,6 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="save()">Save</button>
+</div>

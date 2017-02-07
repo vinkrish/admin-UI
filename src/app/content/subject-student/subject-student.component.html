@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Subject Student</li>
-</ul>
+<div>
+<md-toolbar color="primary">Subject Student</md-toolbar>
+<br>
 <div class="form-group row">
     <label for="clas" class="col-md-2">Class :</label>
     <div class="col-md-4">
@@ -33,21 +33,21 @@
         </select>
     </div>
 </div>
-<div class="row col-md-7">
-    <table class="table table-bordered table-striped">
+<div class="col-md-8">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
-                <th>Roll No</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Subject</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let ss of ssList">
-                <td class="col-xs-1">{{ss.rollNo}}</td>
-                <td class="col-xs-3">{{ss.studentName}}</td>
-                <td class="col-xs-3">
+                <th scope="row">{{ss.rollNo}}</th>
+                <td>{{ss.studentName}}</td>
+                <td>
                     <div class="radio" *ngFor="let sgs of subjectGroupSubjects">
                         <label>
                             <input type="radio" [(ngModel)]="ss.subjectId" [value]="sgs.subjectId"> {{sgs.subjectName}}
@@ -58,6 +58,6 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="updateMapping()">Update</button>
+</div>

@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Activity</li>
-</ul>
+<div>
+<md-toolbar color="primary">Activity</md-toolbar>
+<br>
 <div class="form-group row">
     <label class="col-md-1">Class: </label>
     <div class="col-md-4">
@@ -33,10 +33,10 @@
     </select>
     </div>
 </div>
-<div class="row col-md-12" *ngIf="activities">
-    <table class="table table-bordered table-striped">
+<div *ngIf="activities">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Max Mark</th>
@@ -48,25 +48,25 @@
         </thead>
         <tbody>
             <tr *ngFor="let act of activities" (click)="onSelect(act)" [class.selected]="act === selectedActivity">
-                <td class="col-xs-4">
+                <td>
                     <input [(ngModel)]="act.activityName"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="act.maximumMark"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="act.weightage"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="act.calculation"/>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(act, $event)">
+                    <button type="button" md-button color="primary" (click)="update(act, $event)">
                         update
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(act, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(act, $event)">
                         delete
                     </button>
                 </td>
@@ -77,12 +77,13 @@
 <div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
-
+</div>
 <div *ngIf="addingActivity">
     <div *ngIf="activity">
-    <h3>activity Details</h3>
+    <br>
+    <md-toolbar color="primary">New Activity</md-toolbar>
     <br/>
-    <form (ngSubmit)="save()" #examForm="ngForm">
+    <form (ngSubmit)="save()" #form="ngForm">
         <div class="form-group row">
             <label for="className" class="col-md-1">Class:</label>
             <div class="col-md-4">

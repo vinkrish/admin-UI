@@ -1,8 +1,8 @@
 <div *ngIf="classSubjectGroup">
     <br>
-    <h3>Class Subject-Group Details</h3>
+    <md-toolbar color="primary">New Class Subject-Group</md-toolbar>
     <br/>
-    <form (ngSubmit)="save()" #csgForm="ngForm">
+    <form (ngSubmit)="save()" #form="ngForm">
         <div class="form-group row">
             <label for="name" class="col-md-2">Class</label>
             <div class="col-md-4">

@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Student</li>
-</ul>
+<div>
+<md-toolbar color="primary">Student</md-toolbar>
+<br>
 <div>
     <label>Select Class: </label>
     <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
@@ -14,12 +14,12 @@
         <option *ngFor="let section of sections" value={{section.id}}>{{section.sectionName}}</option>
     </select>
 </div>
-<div class="row col-md-12">
-    <table class="table table-bordered table-striped">
+<div>
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
-                <th>Roll No</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Father's Name</th>
                 <th>Mother's Name</th>
@@ -30,18 +30,18 @@
         </thead>
         <tbody>
             <tr *ngFor="let student of students" (click)="onSelect(student)" [class.selected]="student === selectedStudent">
-                <td class="col-xs-1">{{student.rollNo}}</td>
-                <td class="col-xs-3">{{student.studentName}}</td>
-                <td class="col-xs-2">{{student.fatherName}}</td>
-                <td class="col-xs-2">{{student.motherName}}</td>
-                <td class="col-xs-2">{{student.mobile1}}</td>
+                <th scope="row">{{student.rollNo}}</th>
+                <td>{{student.studentName}}</td>
+                <td>{{student.fatherName}}</td>
+                <td>{{student.motherName}}</td>
+                <td>{{student.mobile1}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(student, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(student, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteStudent(student, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteStudent(student, $event)">
                         delete
                     </button>
                 </td>
@@ -49,9 +49,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addStudent()">Add New </button>
+</div>
 <div *ngIf="addingStudent">
     <ui-student-detail (close)="close($event)"></ui-student-detail>
 </div>

@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Subject-Teacher</li>
-</ul>
+<div>
+<md-toolbar color="primary">Subject Teacher</md-toolbar>
+<br>
 <form>
 <div>
     <label class="col-md-2">Select Class: </label>
@@ -17,10 +17,10 @@
     </select>
 </div>
 </form>
-<div class="row col-md-8">
-    <table class="table table-bordered table-striped">
+<div class="col-md-8">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Subject</th>
                 <th>Teacher</th>
@@ -30,19 +30,20 @@
         </thead>
         <tbody>
             <tr *ngFor="let subjectTeacher of subjectTeachers" (click)="onSelect(subjectTeacher)" [class.selected]="subjectTeacher === selectedSubjectTeacher">
-                <td class="col-xs-3">{{subjectTeacher.subjectName}}</td>
-                <td class="col-xs-3">{{subjectTeacher.teacherName}}</td>
+                <td>{{subjectTeacher.subjectName}}</td>
+                <td>{{subjectTeacher.teacherName}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(subjectTeacher, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(subjectTeacher, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteSubjectTeacher(subjectTeacher, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteSubjectTeacher(subjectTeacher, $event)">
                         delete
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
 </div>

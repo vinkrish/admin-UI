@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Clas } from './clas';
 import { ClassService } from './class.service';
@@ -10,6 +10,8 @@ import { ClassService } from './class.service';
 })
 
 export class ClassComponent implements OnInit {
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+
   classes: Clas[];
   selectedClass: Clas;
   addingClass = false;
@@ -43,6 +45,7 @@ export class ClassComponent implements OnInit {
   addClass() {
 	this.addingClass = true;
 	this.selectedClass = null;
+	//this.scrollToBottom();
   }
 
   gotoEdit(clas: Clas, event: any) {
@@ -60,5 +63,11 @@ export class ClassComponent implements OnInit {
 	  })
 	  .catch(error => this.error = error);
   }
+
+   scrollToBottom(): void {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        } catch(err) { }                 
+    }
 
 }

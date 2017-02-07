@@ -1,25 +1,24 @@
 <div *ngIf="clas">
     <br>
-    <h3>Class Details</h3>
-    <br/>
-    <form (ngSubmit)="save()" #classForm="ngForm">
-        <div class="form-group row">
-            <label for="name" class="col-md-2">Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="clas.className">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="type" class="col-md-2">Attendance Type</label>
-            <div class="col-md-4">
-                <select class="form-control" id="type" name="type" required [(ngModel)]="clas.attendanceType">
-                    <option *ngFor="let attType of attendanceTypes" [value]="attType.type">
-                        {{attType.type}}</option>
-                </select>
-            </div>
-        </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
-    </form>
+    <md-card>
+        <md-toolbar color="primary">Class Details</md-toolbar>
+        <br>
+        <md-card-content>
+            <form (ngSubmit)="save()" #form="ngForm">
+                <md-input style="width: 50%" class="demo-full-width" placeholder="Name" name="className" required [(ngModel)]="clas.className"> </md-input>
+                <p></p>
+                <md-select style="width: 50%" placeholder="Attendance Type" name="type" required [(ngModel)]="clas.attendanceType">
+                    <md-option *ngFor="let attType of attendanceTypes" [value]="attType.type">
+                        {{attType.type}}
+                    </md-option>
+                </md-select>
+                <p></p>
+                <p>
+                    <button md-raised-button color="accent" type="button" (click)="goBack()">Back</button>
+                    <button md-raised-button color="primary" type="submit">Save</button>
+                </p>
+            </form>
+        </md-card-content>
+    </md-card>
     <br/>
 </div>

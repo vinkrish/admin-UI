@@ -1,28 +1,28 @@
-<ul class="breadcrumb">
-    <li class="active">Class</li>
-</ul>
+<div>
+<md-toolbar color="primary">Class</md-toolbar>
+<br>
 <div class="row col-md-7">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
-                <th>Attendance Type</th>
+                <th>Attendance</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let clas of classes" (click)="onSelect(clas)" [class.selected]="clas === selectedClass">
-                <td class="col-xs-3">{{clas.className}}</td>
-                <td class="col-xs-3">{{clas.attendanceType}}</td>
+                <td class="col-md-3">{{clas.className}}</td>
+                <td class="col-md-2">{{clas.attendanceType}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(clas, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(clas, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteClass(clas, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteClass(clas, $event)">
                         delete
                     </button>
                 </td>
@@ -30,9 +30,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addClass()">Add New </button>
+</div>
 <div *ngIf="addingClass">
     <ui-class-detail (close)="close($event)"></ui-class-detail>
 </div>

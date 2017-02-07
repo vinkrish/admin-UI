@@ -1,10 +1,10 @@
-<ul class="breadcrumb">
-    <li class="active">Teacher</li>
-</ul>
-<div class="row col-md-11">
-    <table class="table table-bordered table-striped">
+<div>
+<md-toolbar color="primary">Teacher</md-toolbar>
+<br>
+<div>
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Username</th>
@@ -16,23 +16,23 @@
         </thead>
         <tbody>
             <tr *ngFor="let teacher of teachers" (click)="onSelect(teacher)" [class.selected]="teacher === selectedTeacher">
-                <td class="col-xs-3">{{teacher.teacherName}}</td>
-                <td class="col-xs-2">{{teacher.username}}</td>
-                <td class="col-xs-2">{{teacher.password}}</td>
-                <td class="col-xs-2">{{teacher.mobile}}</td>
+                <td>{{teacher.teacherName}}</td>
+                <td>{{teacher.username}}</td>
+                <td>{{teacher.password}}</td>
+                <td>{{teacher.mobile}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(teacher, $event)">edit</button>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(teacher, $event)">edit</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteTeacher(teacher, $event)">delete</button>
+                    <button type="button" md-button color="accent" (click)="deleteTeacher(teacher, $event)">delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addTeacher()">Add New</button>
+</div>
 <div *ngIf="addingTeacher">
     <ui-teacher-detail (close)="close($event)"></ui-teacher-detail>
 </div>

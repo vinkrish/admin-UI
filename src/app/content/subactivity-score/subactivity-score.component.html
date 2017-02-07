@@ -1,83 +1,79 @@
-<ul class="breadcrumb">
-    <li class="active">Sub-Activity Score</li>
-</ul>
-<div class="form-group row">
-    <label for="clas" class="col-md-1">Class :</label>
-    <div class="col-md-4">
-        <select class="form-control" id="clas" name="clas" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
-            <option *ngFor="let classs of classes" [value]="classs.id">{{classs.className}}</option>
-        </select>
+<div>
+    <md-toolbar color="primary">Sub-Activity Score</md-toolbar>
+    <br>
+    <div class="form-group row">
+        <label for="clas" class="col-md-1">Class :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="clas" name="clas" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
+                <option *ngFor="let classs of classes" [value]="classs.id">{{classs.className}}</option>
+            </select>
+        </div>
     </div>
-</div>
-<div class="form-group row">
-    <label for="sec" class="col-md-1">Section :</label>
-    <div class="col-md-4">
-        <select class="form-control" id="sec" name="sec" required [(ngModel)]="selectedSection.id" (change)="sectionSelected($event.target.value)">
-            <option *ngFor="let section of sections" [value]="section.id">{{section.sectionName}}</option>
-        </select>
+    <div class="form-group row">
+        <label for="sec" class="col-md-1">Section :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="sec" name="sec" required [(ngModel)]="selectedSection.id" (change)="sectionSelected($event.target.value)">
+                <option *ngFor="let section of sections" [value]="section.id">{{section.sectionName}}</option>
+            </select>
+        </div>
     </div>
-</div>
-<div class="form-group row">
-    <label for="exam" class="col-md-1">Exam :</label>
-    <div class="col-md-4">
-        <select class="form-control" id="exam" name="exam" required [(ngModel)]="selectedExam.id" (change)="examSelected($event.target.value)">
-            <option *ngFor="let exam of exams" [value]="exam.id">{{exam.examName}}</option>
-        </select>
+    <div class="form-group row">
+        <label for="exam" class="col-md-1">Exam :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="exam" name="exam" required [(ngModel)]="selectedExam.id" (change)="examSelected($event.target.value)">
+                <option *ngFor="let exam of exams" [value]="exam.id">{{exam.examName}}</option>
+            </select>
+        </div>
     </div>
-</div>
-<div class="form-group row">
-    <label for="examsubject" class="col-md-1">Subject :</label>
-    <div class="col-md-4">
-        <select class="form-control" id="examsubject" name="examsubject" [(ngModel)]="selectedExamSubject.subjectId" required (change)="examSubjectSelected($event.target.value)">
-            <option *ngFor="let es of examSubjects" [value]="es.subjectId">{{es.subjectName}}</option>
-        </select>
+    <div class="form-group row">
+        <label for="examsubject" class="col-md-1">Subject :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="examsubject" name="examsubject" [(ngModel)]="selectedExamSubject.subjectId" required (change)="examSubjectSelected($event.target.value)">
+                <option *ngFor="let es of examSubjects" [value]="es.subjectId">{{es.subjectName}}</option>
+            </select>
+        </div>
     </div>
-</div>
-<div class="form-group row">
-    <label for="activity" class="col-md-1">Activity :</label>
-    <div class="col-md-4">
-        <select class="form-control" id="activity" name="activity" [(ngModel)]="selectedActivity.id" required (change)="activitySelected($event.target.value)">
-            <option *ngFor="let act of activities" [value]="act.id">{{act.activityName}}</option>
-        </select>
+    <div class="form-group row">
+        <label for="activity" class="col-md-1">Activity :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="activity" name="activity" [(ngModel)]="selectedActivity.id" required (change)="activitySelected($event.target.value)">
+                <option *ngFor="let act of activities" [value]="act.id">{{act.activityName}}</option>
+            </select>
+        </div>
     </div>
-</div>
-<div class="form-group row">
-    <label for="subactivity" class="col-md-1">Sub Activity:</label>
-    <div class="col-md-4">
-        <select class="form-control" id="subactivity" name="subactivity" [(ngModel)]="selectedSubActivity.id" required (change)="subActivitySelected($event.target.value)">
-            <option *ngFor="let subact of subActivities" [value]="subact.id">{{subact.subActivityName}}</option>
-        </select>
+    <div class="form-group row">
+        <label for="subactivity" class="col-md-1">Sub Activity:</label>
+        <div class="col-md-4">
+            <select class="form-control" id="subactivity" name="subactivity" [(ngModel)]="selectedSubActivity.id" required (change)="subActivitySelected($event.target.value)">
+                <option *ngFor="let subact of subActivities" [value]="subact.id">{{subact.subActivityName}}</option>
+            </select>
+        </div>
     </div>
-</div>
-<div class="row col-md-6">
-    <table class="table table-bordered table-striped">
-        <caption></caption>
-        <thead class="thead-inverse">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Mark</th>
-                <th>Grade</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let examStudent of examStudents; let i = index">
-                <td class="col-xs-1">{{examStudent.rollNo}}</td>
-                <td class="col-xs-3">{{examStudent.studentName}}</td>
-                <td class="col-xs-1">
-                    <div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped table-sm">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Mark</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let examStudent of examStudents; let i = index">
+                    <th scope="row">{{examStudent.rollNo}}</th>
+                    <td>{{examStudent.studentName}}</td>
+                    <td>
                         <input type="number" [(ngModel)]="score[i].mark" />
-                    </div>
-                </td>
-                <td class="col-xs-1">
-                    <div>
+                    </td>
+                    <td>
                         <input type="text" [(ngModel)]="score[i].grade" />
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="error" *ngIf="error">{{error}}</div>
+    <button type="button" class="btn btn-success btn-md" (click)="save()">Save</button>
 </div>
-<div class="clearfix"></div>
-<div class="error" *ngIf="error">{{error}}</div>
-<button type="button" class="btn btn-success btn-md" (click)="save()">Save</button>

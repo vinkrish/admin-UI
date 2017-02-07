@@ -1,10 +1,10 @@
-<ul class="breadcrumb">
-    <li class="active">Subject Group</li>
-</ul>
-<div class="row col-md-5">
-    <table class="table table-bordered table-striped">
+<div>
+<md-toolbar color="primary">Subject Group</md-toolbar>
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th></th>
@@ -13,14 +13,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let subjectGroup of subjectGroups" (click)="onSelect(subjectGroup)" [class.selected]="subjectGroup === selectedSubjectGroup">
-                <td class="col-xs-3">{{subjectGroup.subjectGroupName}}</td>
+                <td class="col-md-4">{{subjectGroup.subjectGroupName}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(subjectGroup, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(subjectGroup, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteSubjectGroup(subjectGroup, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteSubjectGroup(subjectGroup, $event)">
                         delete
                     </button>
                 </td>
@@ -28,9 +28,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addSubjectGroup()">Add New </button>
+</div>
 <div *ngIf="addingSubjectGroup">
     <ui-subject-group-detail (close)="close($event)"></ui-subject-group-detail>
 </div>

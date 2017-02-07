@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Grade Class Wise</li>
-</ul>
+<div>
+<md-toolbar color="primary">Grade Class Wise</md-toolbar>
+<br>
 <div class="form-group row">
     <label for="clas" class="col-md-1">Class :</label>
     <div class="col-md-3">
@@ -9,10 +9,10 @@
         </select>
     </div>
 </div>
-<div class="row col-md-12">
-    <table class="table table-bordered table-striped">
+<div>
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Grade</th>
                 <th>Mark From</th>
@@ -24,25 +24,25 @@
         </thead>
         <tbody>
             <tr *ngFor="let gcw of gradesClassWise" (click)="onSelect(gcw)" [class.selected]="gcw === selectedGCW">
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="gcw.grade"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="gcw.markFrom"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="gcw.markTo"/>
                 </td>
-                <td class="col-xs-2">
+                <td>
                     <input [(ngModel)]="gcw.gradePoint" placeholder="%" />
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(gcw, $event)">
+                    <button type="button" md-button color="primary" (click)="update(gcw, $event)">
                         update
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(gcw, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(gcw, $event)">
                         delete
                     </button>
                 </td>
@@ -50,14 +50,15 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
+</div>
 <div *ngIf="addingGCW">
 <div *ngIf="gradeClassWise">
-    <h3>Grade Class Wise Details</h3>
+    <br>
+    <md-toolbar color="primary">Grade Class Wise Details</md-toolbar>
     <br/>
-    <form (ngSubmit)="save()" #classForm="ngForm">
+    <form (ngSubmit)="save()" #form="ngForm">
         <div class="form-group row">
             <label for="className" class="col-md-2">Class :</label>
             <div class="col-md-4">

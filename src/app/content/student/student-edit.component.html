@@ -1,7 +1,8 @@
 <div *ngIf="student">
     <br>
-    <h3>Student Details</h3>
-    <form (ngSubmit)="save()" #classForm="ngForm">
+    <md-toolbar color="primary">Student Details</md-toolbar>
+    <br>
+    <form (ngSubmit)="save()" #form="ngForm">
         <div class="form-group row">
             <label for="className" class="col-md-2">Class</label>
             <div class="col-md-4">

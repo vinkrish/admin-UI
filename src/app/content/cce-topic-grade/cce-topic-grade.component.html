@@ -1,7 +1,7 @@
-<ul class="breadcrumb">
-    <li class="active">CCE Topic Grade</li>
-</ul>
-<form #topicGradeForm="ngForm">
+<div>
+<md-toolbar color="primary">CCE Topic Grade</md-toolbar>
+<br>
+<form #form="ngForm">
 <div>
     <label class="col-md-2">Coscholastic: </label>
     <select name="coschName" [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
@@ -23,27 +23,29 @@
     </select>
 </div>
 </form>
-<div class="row col-md-6">
-    <table class="table table-bordered table-striped">
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let grade of topicGrades" (click)="onSelect(grade)" [class.selected]="grade === selectedTopicGrade">
-                <td class="col-xs-4"><input [(ngModel)]="grade.grade"/></td>
-                <td class="col-xs-4"><input [(ngModel)]="grade.value"/></td>
+                <td><input [(ngModel)]="grade.grade"/></td>
+                <td><input [(ngModel)]="grade.value"/></td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="update(grade, $event)">
+                    <button type="button" md-button color="primary" (click)="update(grade, $event)">
                         update
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="delete(grade, $event)">
+                    <button type="button" md-button color="accent" (click)="delete(grade, $event)">
                         delete
                     </button>
                 </td>
@@ -51,13 +53,12 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add New </button>
-
+</div>
 <div *ngIf="addingTopicGrade">
     <div *ngIf="topicGrade">
-    <h3>CCE Topic Grade Details</h3>
+    <md-toolbar color="primary">CCE Topic Grade Details</md-toolbar>
     <br/>
     <form (ngSubmit)="save()" #classForm="ngForm">
         <div class="form-group row">

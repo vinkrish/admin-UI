@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">CCE Topic Primary</li>
-</ul>
+<div>
+<md-toolbar color="primary">CCE Topic Primary</md-toolbar>
+<br>
 <form #topicPrimaryForm="ngForm">
 <div>
     <label class="col-md-2">Coscholastic: </label>
@@ -16,10 +16,11 @@
     </select>
 </div>
 </form>
-<div class="row col-md-6">
-    <table class="table table-bordered table-striped">
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th></th>
@@ -28,14 +29,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let topicPrimary of topicPrimarys" (click)="onSelect(topicPrimary)" [class.selected]="topicPrimary === selectedTopicPrimary">
-                <td class="col-xs-4">{{topicPrimary.name}}</td>
+                <td class="col-md-4">{{topicPrimary.name}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(topicPrimary, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(topicPrimary, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deleteTopicPrimary(topicPrimary, $event)">
+                    <button type="button" md-button color="accent" (click)="deleteTopicPrimary(topicPrimary, $event)">
                         delete
                     </button>
                 </td>
@@ -43,9 +44,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addTopicPrimary()">Add New </button>
+</div>
 <div *ngIf="addingTopicPrimary">
     <ui-cce-topic-primary-detail (close)="close($event)"></ui-cce-topic-primary-detail>
 </div>

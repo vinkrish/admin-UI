@@ -1,6 +1,6 @@
-<ul class="breadcrumb">
-    <li class="active">Portion</li>
-</ul>
+<div>
+<md-toolbar color="primary">Portion</md-toolbar>
+<br>
 <div class="form-group row">
     <label for="clas" class="col-md-2">Class :</label>
     <div class="col-md-4">
@@ -25,10 +25,10 @@
         </select>
     </div>
 </div>
-<div *ngIf="selectedSGS" class="row col-md-6">
-    <table class="table table-bordered table-striped">
+<div *ngIf="selectedSGS" class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
         <caption></caption>
-        <thead class="thead-inverse">
+        <thead>
             <tr>
                 <th>Name</th>
                 <th></th>
@@ -37,14 +37,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let por of portions" (click)="onSelect(por)" [class.selected]="por === selectedPortion">
-                <td class="col-xs-4">{{por.portionName}}</td>
+                <td class="col-md-4">{{por.portionName}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-xs center-block" (click)="gotoEdit(por, $event)">
+                    <button type="button" md-button color="primary" (click)="gotoEdit(por, $event)">
                         edit
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-xs center-block" (click)="deletePortion(por, $event)">
+                    <button type="button" md-button color="accent" (click)="deletePortion(por, $event)">
                         delete
                     </button>
                 </td>
@@ -52,9 +52,9 @@
         </tbody>
     </table>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addPortion()">Add New</button>
+</div>
 <div *ngIf="addingPortion">
     <ui-portion-detail (close)="close($event)"></ui-portion-detail>
 </div>
