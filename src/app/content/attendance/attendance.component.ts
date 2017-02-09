@@ -24,7 +24,6 @@ export class AttendanceComponent implements OnInit {
   selectedClass: Clas;
   sections: Section[];
   selectedSection: Section;
-  selectingSection = false;
   dateAttendance: Date;
   timetables: Timetable[];
   periods: number[];
@@ -52,8 +51,8 @@ export class AttendanceComponent implements OnInit {
 
   ngOnInit() {
 	this.getClasses();
-	this.selectedClass = new Clas(0, "");
-	this.selectedSection = new Section(0, "");
+	this.selectedClass = new Clas();
+	this.selectedSection = new Section();
   }
 
   getClasses() {
@@ -63,18 +62,13 @@ export class AttendanceComponent implements OnInit {
 	  .catch(error => this.error = error);
   }
 
-  classSelected(classId) {
-	for (var i = 0; i < this.classes.length; i++) {
-	  if (this.classes[i].id == classId) {
-		this.selectedClass = this.classes[i];
-	  }
-	}
+  classSelected(selectedClass) {
+  	this.selectedClass = selectedClass;
 	this.timetables = [];
 	this.periods = [];
 	this.getSections(this.selectedClass.id);
 	this.cookieService.put("classId", "" + this.selectedClass.id);
 	this.cookieService.put("className", this.selectedClass.className);
-	this.selectingSection = false;
 	this.markedAttendances = null;
 	this.unmarkedAttendances = null;
   }
@@ -86,18 +80,13 @@ export class AttendanceComponent implements OnInit {
 	  .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-	for (var i = 0; i < this.sections.length; i++) {
-	  if (this.sections[i].id == sectionId) {
-		this.selectedSection = this.sections[i];
-	  }
-	}
+  sectionSelected(selectedSection) {
+  	this.selectedSection = selectedSection;
 	this.timetables = [];
 	this.periods = [];
 	this.cookieService.put("sectionId", "" + this.selectedSection.id);
 	this.cookieService.put("sectionName", this.selectedSection.sectionName);
 	this.getTimetable(this.selectedSection.id);
-	this.selectingSection = true;
 	this.markedAttendances = null;
 	this.unmarkedAttendances = null;
   }

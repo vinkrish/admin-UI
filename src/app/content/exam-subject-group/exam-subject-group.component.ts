@@ -48,12 +48,8 @@ export class ExamSubjectGroupComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.selectedExam = new Exam();
     this.classSubjectGroups = null;
     this.getClassSubjectGroups(this.selectedClass.id);
@@ -69,12 +65,8 @@ export class ExamSubjectGroupComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  examSelected(examId){
-    for (var i = 0; i < this.exams.length; i++) {
-      if (this.exams[i].id == examId) {
-        this.selectedExam = this.exams[i];
-      }
-    }
+  examSelected(selectedExam){
+    this.selectedExam = selectedExam;
     this.examSubjectGroups = null;
     this.getExamSubjectGroup(this.selectedExam.id);
     this.addingEsg = false;

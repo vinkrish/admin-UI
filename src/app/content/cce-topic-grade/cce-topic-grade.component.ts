@@ -49,12 +49,8 @@ export class TopicGradeComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  coschSelected(coscholasticId) {
-    for (var i = 0; i < this.coscholastics.length; i++) {
-      if (this.coscholastics[i].id == coscholasticId) {
-        this.selectedCosch = this.coscholastics[i];
-      }
-    }
+  coschSelected(selectedCosch) {
+    this.selectedCosch = selectedCosch;
     this.topicGrades = null;
     this.getSectionHeadings(this.selectedCosch.id);
     this.selectedSectionHeading = new CceSectionHeading();
@@ -71,12 +67,8 @@ export class TopicGradeComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionHeadingSelected(sectionHeadingId) {
-    for (var i = 0; i < this.sectionHeadings.length; i++) {
-      if (this.sectionHeadings[i].id == sectionHeadingId) {
-        this.selectedSectionHeading = this.sectionHeadings[i];
-      }
-    }
+  sectionHeadingSelected(selectedSectionHeading) {
+    this.selectedSectionHeading = selectedSectionHeading;
     this.topicGrades = null;
     this.selectedTopicPrimary = new CceTopicPrimary();
     this.getTopicPrimarys(this.selectedSectionHeading.id);
@@ -90,12 +82,8 @@ export class TopicGradeComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  topicSelected(topicId) {
-    for (var i = 0; i < this.topicPrimarys.length; i++) {
-      if (this.topicPrimarys[i].id == topicId) {
-        this.selectedTopicPrimary = this.topicPrimarys[i];
-      }
-    }
+  topicSelected(selectedTopicPrimary) {
+    this.selectedTopicPrimary = selectedTopicPrimary;
     this.topicGrades = null;
     this.getTopicGrades(this.selectedTopicPrimary.id);
     this.addingTopicGrade = false;

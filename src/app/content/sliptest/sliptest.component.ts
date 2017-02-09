@@ -44,7 +44,7 @@ export class SliptestComponent implements OnInit {
 
   ngOnInit() {
     this.getClasses();
-    this.selectedClass = new Clas(0, "");
+    this.selectedClass = new Clas();
     this.clearValues();
   }
 
@@ -55,12 +55,8 @@ export class SliptestComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.clearValues();
     this.getSections(this.selectedClass.id);
     this.getClassSubjectGroups(this.selectedClass.id);
@@ -76,12 +72,8 @@ export class SliptestComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-    for (var i = 0; i < this.sections.length; i++) {
-      if (this.sections[i].id == sectionId) {
-        this.selectedSection = this.sections[i];
-      }
-    }
+  sectionSelected(selectedSection) {
+    this.selectedSection = selectedSection;
     this.selectedSliptest = new Sliptest();
     this.selectedSGS = new SubjectGroupSubject();
     this.sliptests = [];
@@ -97,12 +89,8 @@ export class SliptestComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  csgSelected(csgId){
-    for (var i = 0; i < this.classSubjectGroups.length; i++) {
-      if (this.classSubjectGroups[i].subjectGroupId == csgId) {
-        this.selectedCSG = this.classSubjectGroups[i];
-      }
-    }
+  csgSelected(selectedCSG){
+    this.selectedCSG = selectedCSG;
     this.selectedSGS = new SubjectGroupSubject();
     this.selectedSliptest = new Sliptest();
     this.subjectGroupSubjects = [];
@@ -118,12 +106,8 @@ export class SliptestComponent implements OnInit {
         .catch(error => this.error = error);
   }
 
-  sgsSelected(subjectId) {
-    for (var i = 0; i < this.subjectGroupSubjects.length; i++) {
-      if (this.subjectGroupSubjects[i].subjectId == subjectId) {
-        this.selectedSGS = this.subjectGroupSubjects[i];
-      }
-    }
+  sgsSelected(selectedSGS) {
+    this.selectedSGS = selectedSGS;
     this.selectedSliptest = new Sliptest();
     this.sliptests = [];
     this.getSliptests();

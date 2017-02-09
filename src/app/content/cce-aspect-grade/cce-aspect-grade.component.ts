@@ -80,12 +80,8 @@ export class AspectGradeComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.clearValues();
     this.getSections(this.selectedClass.id);
   }
@@ -97,16 +93,11 @@ export class AspectGradeComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-    for (var i = 0; i < this.sections.length; i++) {
-      if (this.sections[i].id == sectionId) {
-        this.selectedSection = this.sections[i];
-      }
-    }
+  sectionSelected(selectedSection) {
+    this.selectedSection = selectedSection;
     this.students = [];
     this.grades = [];
     this.existingGrades = [];
-    //this.getStudents(this.selectedSection.id);
   }
 
   getStudents(id: number) {
@@ -126,12 +117,8 @@ export class AspectGradeComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  coschSelected(coscholasticId) {
-    for (var i = 0; i < this.coscholastics.length; i++) {
-      if (this.coscholastics[i].id == coscholasticId) {
-        this.selectedCosch = this.coscholastics[i];
-      }
-    }
+  coschSelected(selectedCosch) {
+    this.selectedCosch = selectedCosch;
     this.aspects = null;
     this.getSectionHeadings(this.selectedCosch.id);
     this.selectedSectionHeading = new CceSectionHeading();
@@ -146,12 +133,8 @@ export class AspectGradeComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionHeadingSelected(sectionHeadingId) {
-    for (var i = 0; i < this.sectionHeadings.length; i++) {
-      if (this.sectionHeadings[i].id == sectionHeadingId) {
-        this.selectedSectionHeading = this.sectionHeadings[i];
-      }
-    }
+  sectionHeadingSelected(selectedSectionHeading) {
+    this.selectedSectionHeading = selectedSectionHeading;
     this.aspects = null;
     this.selectedTopicPrimary = new CceTopicPrimary();
     this.getTopicPrimarys(this.selectedSectionHeading.id);
@@ -164,12 +147,8 @@ export class AspectGradeComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  topicSelected(topicId) {
-    for (var i = 0; i < this.topicPrimarys.length; i++) {
-      if (this.topicPrimarys[i].id == topicId) {
-        this.selectedTopicPrimary = this.topicPrimarys[i];
-      }
-    }
+  topicSelected(selectedTopicPrimary) {
+    this.selectedTopicPrimary = selectedTopicPrimary;
     this.aspects = null;
     this.getAspects(this.selectedTopicPrimary.id);
   }
@@ -181,12 +160,8 @@ export class AspectGradeComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  aspectSelected(aspectId) {
-    for (var i = 0; i < this.aspects.length; i++) {
-      if (this.aspects[i].id == aspectId) {
-        this.selectedAspect = this.aspects[i];
-      }
-    }
+  aspectSelected(selectedAspect) {
+    this.selectedAspect = selectedAspect;
   }
 
   getGrades() {

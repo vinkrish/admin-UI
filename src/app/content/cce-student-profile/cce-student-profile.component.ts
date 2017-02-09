@@ -52,12 +52,8 @@ export class CceStudentProfileComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.clearValues();
     this.getSections(this.selectedClass.id);
   }
@@ -69,12 +65,8 @@ export class CceStudentProfileComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-    for (var i = 0; i < this.sections.length; i++) {
-      if (this.sections[i].id == sectionId) {
-        this.selectedSection = this.sections[i];
-      }
-    }
+  sectionSelected(selectedSection) {
+    this.selectedSection = selectedSection;
     this.cceProfiles = [];
     this.existingCceProfiles = [];
     this.students = [];

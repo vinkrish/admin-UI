@@ -4,22 +4,22 @@
 <form #form="ngForm">
 <div>
     <label class="col-md-2">Coscholastic: </label>
-    <select name="coschName" [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
-        <option *ngFor="let cosch of coscholastics" value={{cosch.id}}>{{cosch.name}}</option>
+    <select name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
     </select>
 </div>
 <br/>
 <div>
     <label class="col-md-2">Section Heading: </label>
-    <select name="secHeadName" [(ngModel)]="selectedSectionHeading.id" (change)="sectionHeadingSelected($event.target.value)">
-        <option *ngFor="let secHead of sectionHeadings" value={{secHead.id}}>{{secHead.name}}</option>
+    <select name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+        <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
     </select>
 </div>
 <br/>
 <div>
     <label for="topicName" class="col-md-2">Topic: </label>
-    <select name="topicName" name="topicName" [(ngModel)]="selectedTopicPrimary.id" (change)="topicSelected($event.target.value)">
-        <option *ngFor="let topic of topicPrimarys" value={{topic.id}}>{{topic.name}}</option>
+    <select name="topicName" name="topicName" [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
+        <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
     </select>
 </div>
 </form>

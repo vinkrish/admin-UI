@@ -38,12 +38,8 @@ export class GradeClassWiseComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.addingGCW = false;
     this.getGradesClassWise(this.selectedClass.id);
   }

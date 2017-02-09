@@ -38,12 +38,8 @@ export class SectionHeadingComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  coschSelected(coscholasticId) {
-    for (var i = 0; i < this.coscholastics.length; i++) {
-      if (this.coscholastics[i].id == coscholasticId) {
-        this.selectedCosch = this.coscholastics[i];
-      }
-    }
+  coschSelected(selectedCosch) {
+    this.selectedCosch = selectedCosch;
     this.getSectionHeadings(this.selectedCosch.id);
     this._cookieService.put("coscholasticId", "" + this.selectedCosch.id);
     this._cookieService.put("coscholasticName", this.selectedCosch.name);

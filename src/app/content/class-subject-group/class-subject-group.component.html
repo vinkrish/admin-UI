@@ -3,8 +3,8 @@
 <br>
 <div>
     <label>Class: </label>
-    <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
-        <option *ngFor="let clas of classes" value={{clas.id}}>{{clas.className}}</option>
+    <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+        <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
     </select>
 </div>
 <div class="col-md-5">

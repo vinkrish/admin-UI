@@ -50,7 +50,7 @@ export class SubjectStudentComponent implements OnInit {
 
   ngOnInit() {
     this.getClasses();
-    this.selectedClass = new Clas(0, "");
+    this.selectedClass = new Clas();
     this.clearValues();
   }
 
@@ -61,12 +61,8 @@ export class SubjectStudentComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.clearValues();
     this.getSections(this.selectedClass.id);
     this.getClassSubjectGroups(this.selectedClass.id);
@@ -79,12 +75,8 @@ export class SubjectStudentComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-    for (var i = 0; i < this.sections.length; i++) {
-      if (this.sections[i].id == sectionId) {
-        this.selectedSection = this.sections[i];
-      }
-    }
+  sectionSelected(selectedSection) {
+    this.selectedSection = selectedSection;
     this.getStudents(this.selectedSection.id);
   }
 
@@ -95,14 +87,8 @@ export class SubjectStudentComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  subjectGroupSelected(subjectGroupId){
-     //this.selectedClass = null;
-      for (var i = 0; i < this.clasSubjectGroups.length; i++)
-      {
-        if (this.clasSubjectGroups[i].subjectGroupId == subjectGroupId) {
-          this.selectedCSG = this.clasSubjectGroups[i];
-        }
-      }
+  subjectGroupSelected(selectedCSG){
+     this.selectedCSG = selectedCSG;
      this.getSubjectGroupSubjects(this.selectedCSG.subjectGroupId);
      this.getSubjectStudents();
    }
@@ -116,14 +102,10 @@ export class SubjectStudentComponent implements OnInit {
           .catch(error => this.error = error);
     }
 
-  subjectGroupSubjectSelected(sgsId){
-    for (var i = 0; i < this.subjectGroupSubjects.length; i++){
-        if (this.subjectGroupSubjects[i].subjectId == sgsId) {
-          this.selectedSGS = this.subjectGroupSubjects[i];
-        }
-      }
+  subjectGroupSubjectSelected(selectedSGS){
+      this.selectedSGS = selectedSGS;
       for(var i=0; i<this.ssList.length; i++){
-        this.ssList[i].subjectId = sgsId;
+        this.ssList[i].subjectId = selectedSGS.subjectId;
     }
   }
 
@@ -168,7 +150,7 @@ export class SubjectStudentComponent implements OnInit {
   }
 
   clearValues() {
-    this.selectedSection = new Section(0, "");
+    this.selectedSection = new Section();
     this.selectedCSG = new ClassSubjectGroup();
     this.subjectStudents = [];
     this.ssList = [];

@@ -4,24 +4,24 @@
 <div class="form-group row">
     <label for="clas" class="col-md-2">Class :</label>
     <div class="col-md-4">
-        <select class="form-control" id="clas" name="clas" required [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
-            <option *ngFor="let classs of classes" [value]="classs.id">{{classs.className}}</option>
+        <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
         </select>
     </div>
 </div>
 <div class="form-group row">
     <label for="group" class="col-md-2">Subject Group :</label>
     <div class="col-md-4">
-        <select class="form-control" id="group" name="group" required [(ngModel)]="selectedCSG.subjectGroupId" (change)="csgSelected($event.target.value)">
-            <option *ngFor="let group of classSubjectGroups" [value]="group.subjectGroupId">{{group.subjectGroupName}}</option>
+        <select class="form-control" id="group" name="group" required [ngModel]="selectedCSG" (ngModelChange)="csgSelected($event)">
+            <option *ngFor="let group of classSubjectGroups" [ngValue]="group">{{group.subjectGroupName}}</option>
         </select>
     </div>
 </div>
 <div class="form-group row">
     <label for="subject" class="col-md-2">Subject :</label>
     <div class="col-md-4">
-        <select class="form-control" id="subject" name="subject" [(ngModel)]="selectedSGS.subjectId" required (change)="sgsSelected($event.target.value)">
-            <option *ngFor="let subject of subjectGroupSubjects" [value]="subject.subjectId">{{subject.subjectName}}</option>
+        <select class="form-control" id="subject" name="subject" [ngModel]="selectedSGS" required (ngModelChange)="sgsSelected($event)">
+            <option *ngFor="let subject of subjectGroupSubjects" [ngValue]="subject">{{subject.subjectName}}</option>
         </select>
     </div>
 </div>

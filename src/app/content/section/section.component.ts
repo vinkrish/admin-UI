@@ -29,7 +29,7 @@ export class SectionComponent implements OnInit {
 
   ngOnInit() {
     this.getClasses();
-    this.selectedClass = new Clas(0, "");
+    this.selectedClass = new Clas();
   }
 
   getClasses() {
@@ -39,16 +39,11 @@ export class SectionComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+  classSelected(selectedClass) {
+    this.selectedClass = selectedClass;
     this.getSections(this.selectedClass.id);
     this._cookieService.put("classId", "" + this.selectedClass.id);
     this._cookieService.put("className", this.selectedClass.className);
-    //this.addSection();
     this.addingSection = false;
   }
 

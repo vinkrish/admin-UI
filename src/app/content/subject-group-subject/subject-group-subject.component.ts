@@ -39,12 +39,8 @@ export class SubjectGroupSubjectComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  subjectGroupSelected(subjectGroupId) {
-    for (var i = 0; i < this.subjectGroups.length; i++) {
-      if (this.subjectGroups[i].id == subjectGroupId) {
-        this.selectedSubjectGroup = this.subjectGroups[i];
-      }
-    }
+  subjectGroupSelected(selectedSubjectGroup) {
+    this.selectedSubjectGroup = selectedSubjectGroup;
     this.getSubjectGroupSubjects(this.selectedSubjectGroup.id);
     this.cookieService.put("subjectGroupId", "" + this.selectedSubjectGroup.id);
     this.cookieService.put("subjectGroupName", this.selectedSubjectGroup.subjectGroupName);

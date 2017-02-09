@@ -38,14 +38,8 @@ export class CceCoschClassComponent implements OnInit {
         .catch(error => this.error = error);
     }
 
-   coSchSelected(subjectGroupId){
-     //this.selectedClass = null;
-      for (var i = 0; i < this.cceCoscholastics.length; i++)
-      {
-        if (this.cceCoscholastics[i].id == subjectGroupId) {
-          this.selectedCosch = this.cceCoscholastics[i];
-        }
-      }
+   coSchSelected(selectedCosch){
+     this.selectedCosch = selectedCosch;
      this.getCceCoschClasses(this.selectedCosch.id);
      this.cookieService.put("coScholasticId", ""+this.selectedCosch.id);
      this.cookieService.put("coScholasticName", this.selectedCosch.name);

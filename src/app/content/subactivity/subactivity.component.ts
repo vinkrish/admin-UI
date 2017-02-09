@@ -62,13 +62,9 @@ export class SubActivityComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
+  classSelected(selectedClass) {
     this.examSubjects = null;
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+    this.selectedClass = selectedClass;
     this.subActivities = null;
     this.selectedSection = new Section();
     this.selectedExam = new Exam();
@@ -86,12 +82,8 @@ export class SubActivityComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-    for (var i = 0; i < this.sections.length; i++) {
-      if (this.sections[i].id == sectionId) {
-        this.selectedSection = this.sections[i];
-      }
-    }
+  sectionSelected(selectedSection) {
+    this.selectedSection = selectedSection;
     this.selectedExamSubject = new ExamSubject();
     this.selectedActivity = new Activity();
     this.activities = null;
@@ -106,13 +98,9 @@ export class SubActivityComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  examSelected(examId){
+  examSelected(selectedExam){
     this.examSubjects = null;
-    for (var i = 0; i < this.exams.length; i++) {
-      if (this.exams[i].id == examId) {
-        this.selectedExam = this.exams[i];
-      }
-    }
+    this.selectedExam = selectedExam;
     this.activities = null;
     this.subActivities = null;
     this.getExamSubjects(this.selectedExam.id);
@@ -126,12 +114,8 @@ export class SubActivityComponent implements OnInit {
       .catch(error => this.error = error)
   }
 
-  examSubjectSelected(subjectId) {
-    for (var i = 0; i < this.examSubjects.length; i++) {
-      if (this.examSubjects[i].subjectId == subjectId) {
-        this.selectedExamSubject = this.examSubjects[i];
-      }
-    }
+  examSubjectSelected(selectedExamSubject) {
+    this.selectedExamSubject = selectedExamSubject;
     this.activities = null;
     this.subActivities = null;
     this.getActivities();
@@ -145,12 +129,8 @@ export class SubActivityComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  activitySelected(activityId) {
-    for (var i = 0; i < this.activities.length; i++) {
-      if (this.activities[i].id == activityId) {
-        this.selectedActivity = this.activities[i];
-      }
-    }
+  activitySelected(selectedActivity) {
+    this.selectedActivity = selectedActivity;
     this.subActivities = null;
     this.getSubActivities();
     this.addingSubActivity = false;

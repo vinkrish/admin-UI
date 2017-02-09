@@ -11,7 +11,6 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
   private loggedIn = false;
   private auth_response: AuthResponse;
-  //private loginUrl = 'http://sample-env.m23riezw6z.us-west-2.elasticbeanstalk.com/guldu/webapi/login';
   private loginUrl = 'http://localhost:8080/guldu/webapi/login';
   private isLoggedInSubject: BehaviorSubject<boolean>;
 

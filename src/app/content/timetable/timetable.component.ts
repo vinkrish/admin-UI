@@ -55,12 +55,8 @@ export class TimetableComponent {
 	  .catch(error => this.error = error);
   }
 
-  classSelected(classId) {
-	for (var i = 0; i < this.classes.length; i++) {
-	  if (this.classes[i].id == classId) {
-		this.selectedClass = this.classes[i];
-	  }
-	}
+  classSelected(selectedClass) {
+	this.selectedClass = selectedClass;
 	this.isNewTimetable = false;
 	this.getSections(this.selectedClass.id);
 	this.getSubjects(this.selectedClass.id);
@@ -78,12 +74,8 @@ export class TimetableComponent {
 	  .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-	for (var i = 0; i < this.sections.length; i++) {
-	  if (this.sections[i].id == sectionId) {
-		this.selectedSection = this.sections[i];
-	  }
-	}
+  sectionSelected(selectedSection) {
+	this.selectedSection = selectedSection;
 	this.isNewTimetable = false;
 	this.selectingSection = true;
 	this.timetables = [];
@@ -103,13 +95,9 @@ export class TimetableComponent {
 	  .catch(error => this.error = error);
   }
 
-  daySelected(day: string) {
+  daySelected(day) {
 	this.selectedTimetable = [];
-	for (let timetab of this.timetables) {
-	  if (timetab.dayOfWeek == day) {
-		this.selectedTimetable.push(timetab);
-	  }
-	}
+	this.selectedTimetable.push(day);
   }
 
   getSubjects(id: number) {

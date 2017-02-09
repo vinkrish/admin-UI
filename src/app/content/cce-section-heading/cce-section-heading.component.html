@@ -3,8 +3,8 @@
 <br>
 <div>
     <label>Select Coscholastic: </label>
-    <select [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
-        <option *ngFor="let cosch of coscholastics" value={{cosch.id}}>{{cosch.name}}</option>
+    <select [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
     </select>
 </div>
 <br>

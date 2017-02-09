@@ -62,13 +62,9 @@ export class ExamSubjectComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  classSelected(classId) {
+  classSelected(selectedClass) {
     this.examSubjects = null;
-    for (var i = 0; i < this.classes.length; i++) {
-      if (this.classes[i].id == classId) {
-        this.selectedClass = this.classes[i];
-      }
-    }
+    this.selectedClass = selectedClass;
     this.selectedExam = new Exam();
     this.selectedEsg = new ExamSubjectGroup();
     this.examSubjectGroups = null;
@@ -83,13 +79,9 @@ export class ExamSubjectComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  examSelected(examId){
+  examSelected(selectedExam){
     this.examSubjects = null;
-    for (var i = 0; i < this.exams.length; i++) {
-      if (this.exams[i].id == examId) {
-        this.selectedExam = this.exams[i];
-      }
-    }
+    this.selectedExam = selectedExam;
     this.selectedEsg = new ExamSubjectGroup();
     this.examSubjectGroups = null;
     this.getExamSubjectGroup(this.selectedExam.id);
@@ -104,12 +96,8 @@ export class ExamSubjectComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  esgSelected(esgId){
-    for (var i = 0; i < this.examSubjectGroups.length; i++) {
-      if (this.examSubjectGroups[i].subjectGroupId == esgId) {
-        this.selectedEsg = this.examSubjectGroups[i];
-      }
-    }
+  esgSelected(selectedEsg){
+    this.selectedEsg = selectedEsg;
     this.getSubjectGroupSubjects(this.selectedEsg.subjectGroupId);
     this.addingExamSubject = false;
   }

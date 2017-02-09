@@ -4,15 +4,15 @@
 <form #topicPrimaryForm="ngForm">
 <div>
     <label class="col-md-2">Coscholastic: </label>
-    <select name="coschName" [(ngModel)]="selectedCosch.id" (change)="coschSelected($event.target.value)">
-        <option *ngFor="let cosch of coscholastics" value={{cosch.id}}>{{cosch.name}}</option>
+    <select name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
     </select>
 </div>
 <br/>
 <div>
     <label class="col-md-2">Section Heading: </label>
-    <select name="secHeadName" [(ngModel)]="selectedSectionHeading.id" (change)="sectionHeadingSelected($event.target.value)">
-        <option *ngFor="let secHead of sectionHeadings" value={{secHead.id}}>{{secHead.name}}</option>
+    <select name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+        <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
     </select>
 </div>
 </form>

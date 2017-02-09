@@ -3,15 +3,15 @@
 <br>
 <div>
     <label>Select Class: </label>
-    <select [(ngModel)]="selectedClass.id" (change)="classSelected($event.target.value)">
-        <option *ngFor="let classs of classes" value={{classs.id}}>{{classs.className}}</option>
+    <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+        <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
     </select>
 </div>
 <br/>
 <div>
     <label>Select Section: </label>
-    <select [(ngModel)]="selectedSection.id" (change)="sectionSelected($event.target.value)">
-        <option *ngFor="let section of sections" value={{section.id}}>{{section.sectionName}}</option>
+    <select [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+        <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
     </select>
 </div>
 <div>

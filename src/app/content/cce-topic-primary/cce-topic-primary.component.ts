@@ -45,12 +45,8 @@ export class TopicPrimaryComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  coschSelected(coscholasticId) {
-    for (var i = 0; i < this.coscholastics.length; i++) {
-      if (this.coscholastics[i].id == coscholasticId) {
-        this.selectedCosch = this.coscholastics[i];
-      }
-    }
+  coschSelected(selectedCosch) {
+    this.selectedCosch = selectedCosch;
     this.getSectionHeadings(this.selectedCosch.id);
     this.selectedSectionHeading = new CceSectionHeading(0, "");
     this._cookieService.put("coscholasticId", "" + this.selectedCosch.id);
@@ -67,12 +63,8 @@ export class TopicPrimaryComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionHeadingSelected(sectionHeadingId) {
-    for (var i = 0; i < this.sectionHeadings.length; i++) {
-      if (this.sectionHeadings[i].id == sectionHeadingId) {
-        this.selectedSectionHeading = this.sectionHeadings[i];
-      }
-    }
+  sectionHeadingSelected(selectedSectionHeading) {
+    this.selectedSectionHeading = selectedSectionHeading;
     this.getTopicPrimarys(this.selectedSectionHeading.id);
     this._cookieService.put("sectionHeadingId", "" + this.selectedSectionHeading.id);
     this._cookieService.put("sectionHeadingName", this.selectedSectionHeading.name);

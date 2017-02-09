@@ -49,18 +49,13 @@ export class AspectPrimaryComponent implements OnInit {
       .catch(error => this.error = error);
     }
 
-  coschSelected(coscholasticId) {
-    for (var i = 0; i < this.coscholastics.length; i++) {
-      if (this.coscholastics[i].id == coscholasticId) {
-        this.selectedCosch = this.coscholastics[i];
-      }
-    }
+  coschSelected(selectedCosch) {
+    this.selectedCosch = selectedCosch;
     this.aspects = null;
     this.getSectionHeadings(this.selectedCosch.id);
     this.selectedSectionHeading = new CceSectionHeading();
     this.selectedTopicPrimary = new CceTopicPrimary();
     this.addingAspect = false;
-    //this.selectingSecHead = false;
     this.topicPrimarys = null;
   }
 
@@ -71,12 +66,8 @@ export class AspectPrimaryComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  sectionHeadingSelected(sectionHeadingId) {
-    for (var i = 0; i < this.sectionHeadings.length; i++) {
-      if (this.sectionHeadings[i].id == sectionHeadingId) {
-        this.selectedSectionHeading = this.sectionHeadings[i];
-      }
-    }
+  sectionHeadingSelected(selectedSectionHeading) {
+    this.selectedSectionHeading = selectedSectionHeading;
     this.aspects = null;
     this.selectedTopicPrimary = new CceTopicPrimary();
     this.getTopicPrimarys(this.selectedSectionHeading.id);
@@ -90,12 +81,8 @@ export class AspectPrimaryComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  topicSelected(topicId) {
-    for (var i = 0; i < this.topicPrimarys.length; i++) {
-      if (this.topicPrimarys[i].id == topicId) {
-        this.selectedTopicPrimary = this.topicPrimarys[i];
-      }
-    }
+  topicSelected(selectedTopicPrimary) {
+    this.selectedTopicPrimary = selectedTopicPrimary;
     this.aspects = null;
     this.getAspects(this.selectedTopicPrimary.id);
     this.addingAspect = false;

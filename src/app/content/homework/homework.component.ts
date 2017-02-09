@@ -35,8 +35,8 @@ export class HomeworkComponent {
 
   ngOnInit() {
 	this.getClasses();
-	this.selectedClass = new Clas(0, "");
-	this.selectedSection = new Section(0, "");
+	this.selectedClass = new Clas();
+	this.selectedSection = new Section();
   }
 
   getClasses() {
@@ -46,12 +46,8 @@ export class HomeworkComponent {
 	  .catch(error => this.error = error);
   }
 
-  classSelected(classId) {
-	for (var i = 0; i < this.classes.length; i++) {
-	  if (this.classes[i].id == classId) {
-		this.selectedClass = this.classes[i];
-	  }
-	}
+  classSelected(selectedClass) {
+	this.selectedClass = selectedClass;
 	this.getSections(this.selectedClass.id);
 	this.cookieService.put("classId", "" + this.selectedClass.id);
 	this.cookieService.put("className", this.selectedClass.className);
@@ -66,12 +62,8 @@ export class HomeworkComponent {
 	  .catch(error => this.error = error);
   }
 
-  sectionSelected(sectionId) {
-	for (var i = 0; i < this.sections.length; i++) {
-	  if (this.sections[i].id == sectionId) {
-		this.selectedSection = this.sections[i];
-	  }
-	}
+  sectionSelected(selectedSection) {
+	this.selectedSection = selectedSection;
 	this.cookieService.put("sectionId", "" + this.selectedSection.id);
 	this.cookieService.put("sectionName", this.selectedSection.sectionName);
 	this.selectingSection = true;
