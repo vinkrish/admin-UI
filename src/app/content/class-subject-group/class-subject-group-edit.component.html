@@ -12,8 +12,8 @@
         <div class="form-group row">
             <label for="type" class="col-md-2">Subject-Group</label>
             <div class="col-md-4">
-                <select class="form-control" id="type" name="type" required [(ngModel)]="classSubjectGroup.subjectGroupId" (change)="subjectGroupSelected($event.target.value)">
-                    <option *ngFor="let subjectGroup of subjectGroups" [value]="subjectGroup.id">{{subjectGroup.subjectGroupName}}</option>
+                <select class="form-control" id="type" name="type" required [ngModel]="classSubjectGroup.subjectGroupId" (ngModelChange)="subjectGroupSelected($event)">
+                    <option *ngFor="let subjectGroup of subjectGroups" [ngValue]="subjectGroup.id">{{subjectGroup.subjectGroupName}}</option>
                 </select>
             </div>
         </div>

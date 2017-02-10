@@ -1,10 +1,10 @@
 <div>
-<md-toolbar color="primary">Exam Subjct Group</md-toolbar>
+<md-toolbar color="primary">Exam Subject Group</md-toolbar>
 <br>
 <div>
     <label>Class: </label>
     <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-        <option *ngFor="let clas of classes" [ngvalue]="clas">{{clas.className}}</option>
+        <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
     </select>
 </div>
 <br/>
@@ -45,18 +45,18 @@
     <md-toolbar color="primary">Exam Subject Group Details</md-toolbar>
     <br/>
     <div class="form-group row">
-        <label class="col-xs-2">Class:</label>
+        <label class="col-md-2">Class:</label>
         {{selectedClass.className}} 
     </div>
     <div class="form-group row">
-        <label class="col-xs-2">Exam:</label>
+        <label class="col-md-2">Exam:</label>
         {{selectedExam.examName}}
     </div>
     <div class="form-group row">
-        <label class="col-xs-2">Subject Group: </label>
-        <div class="col-xs-4">
-        <select class="form-control"  required [(ngModel)]="examSubjectGroup.subjectGroupId" (change)="csgSelected($event.target.value)">
-            <option *ngFor="let csg of classSubjectGroups" value={{csg.subjectGroupId}}>{{csg.subjectGroupName}}</option>
+        <label class="col-md-2">Subject Group: </label>
+        <div class="col-md-4">
+        <select class="form-control"  required [ngModel]="examSubjectGroup.subjectGroupId" (ngModelChange)="csgSelected($event.target.value)">
+            <option *ngFor="let csg of classSubjectGroups" [ngValue]="csg.subjectGroupId">{{csg.subjectGroupName}}</option>
         </select>
         </div>
     </div>

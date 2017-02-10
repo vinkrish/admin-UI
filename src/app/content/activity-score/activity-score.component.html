@@ -12,7 +12,7 @@
     <div class="form-group row">
         <label for="sec" class="col-md-1">Section :</label>
         <div class="col-md-4">
-            <select class="form-control" id="sec" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+            <select class="form-control" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
                 <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
             </select>
         </div>
@@ -20,7 +20,7 @@
     <div class="form-group row">
         <label for="exam" class="col-md-1">Exam :</label>
         <div class="col-md-4">
-            <select class="form-control" id="exam" name="exam" required [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
+            <select class="form-control" name="exam" required [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
                 <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
             </select>
         </div>
@@ -28,7 +28,7 @@
     <div class="form-group row">
         <label for="examsubject" class="col-md-1">Subject :</label>
         <div class="col-md-4">
-            <select class="form-control" id="examsubject" name="examsubject" [ngModel]="selectedExamSubject" required (ngModelChange)="examSubjectSelected($event)">
+            <select class="form-control" name="examsubject" [ngModel]="selectedExamSubject" required (ngModelChange)="examSubjectSelected($event)">
                 <option *ngFor="let es of examSubjects" [ngValue]="es">{{es.subjectName}}</option>
             </select>
         </div>
@@ -36,7 +36,7 @@
     <div class="form-group row">
         <label for="activity" class="col-md-1">Activity :</label>
         <div class="col-md-4">
-            <select class="form-control" id="activity" name="activity" [ngModel]="selectedActivity" required (ngModelChange)="activitySelected($event)">
+            <select class="form-control" name="activity" [ngModel]="selectedActivity" required (ngModelChange)="activitySelected($event)">
                 <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
             </select>
         </div>

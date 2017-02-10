@@ -85,7 +85,7 @@
                 <td>{{attendance.studentName}}</td>
                 <td>
                     <select [(ngModel)]="attendance.typeOfLeave">
-                        <option *ngFor="let leaveType of leaveTypes" value={{leaveType.type}}>{{leaveType.type}}</option>
+                        <option *ngFor="let leaveType of leaveTypes" [value]="leaveType.type">{{leaveType.type}}</option>
                     </select>
                 </td>
             </tr>

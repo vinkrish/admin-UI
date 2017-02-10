@@ -24,8 +24,8 @@
         <div class="form-group row">
             <label for="teacher" class="col-md-2">Teacher</label>
             <div class="col-md-4">
-                <select class="form-control" id="teacher" name="teacher" required [(ngModel)]="subjectTeacher.teacherId" (change)="teacherSelected($event.target.value)">
-                    <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.teacherName}}</option>
+                <select class="form-control" name="teacher" required [ngModel]="subjectTeacher" (ngModelChange)="teacherSelected($event)">
+                    <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher.teacherName}}</option>
                 </select>
             </div>
         </div>
