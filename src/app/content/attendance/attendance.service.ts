@@ -62,11 +62,28 @@ export class AttendanceService {
       .catch(this.handleError);
   }
 
+  deleteWhole(attendance: Attendance) {
+    let url = `${this.attendanceUrl}/deleteWhole`;
+    return this.http
+      .delete(url, { headers: this.headers, body: '' })
+      .toPromise()
+      .catch(this.handleError);
+  }
+
   post(attendance: Attendance[]) {
     let url = `${this.attendanceUrl}/list`;
     return this.http
       .post(url, JSON.stringify(attendance), { headers: this.headers })
       .toPromise()
+      .catch(this.handleError);
+  }
+
+  noAbsentees(attendance: Attendance): Promise<Attendance> {
+  	let url = `${this.attendanceUrl}/noAbsentees`;
+    return this.http
+      .post(url, JSON.stringify(attendance), { headers: this.headers })
+      .toPromise()
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

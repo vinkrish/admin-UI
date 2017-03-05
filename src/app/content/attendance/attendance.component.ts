@@ -34,11 +34,16 @@ export class AttendanceComponent implements OnInit {
 	new LeaveType(""),
 	new LeaveType("Absent")
   ]
+  noAbsenteesTypes = [
+  	new LeaveType(""),
+	new LeaveType("No Absentees")
+  ]
   session: number;
   sessions = [
 	new Session("Morning", 0),
 	new Session("Afternoon", 1)
   ]
+  noAbsentee: String;
   error: any;
 
   constructor(
@@ -71,6 +76,7 @@ export class AttendanceComponent implements OnInit {
 	this.cookieService.put("className", this.selectedClass.className);
 	this.markedAttendances = null;
 	this.unmarkedAttendances = null;
+	this.noAbsentee = "";
   }
 
   getSections(id: number) {
@@ -89,6 +95,7 @@ export class AttendanceComponent implements OnInit {
 	this.getTimetable(this.selectedSection.id);
 	this.markedAttendances = null;
 	this.unmarkedAttendances = null;
+	this.noAbsentee = "";
   }
 
   getTimetable(sectionId: number) {
@@ -107,7 +114,9 @@ export class AttendanceComponent implements OnInit {
 	}
   }
 
+
   fetchAttendance() {
+  	this.noAbsentee = "";
 	this.markedAttendances = [];
 	this.unmarkedAttendances = [];
 	this.getMarkedAttendance(this.selectedSection.id, this.dateAttendance);
@@ -115,6 +124,7 @@ export class AttendanceComponent implements OnInit {
   }
 
   fetchSessionAttendance() {
+  	this.noAbsentee = "";
 	this.markedAttendances = [];
 	this.unmarkedAttendances = [];
 	this.getMarkedSessionAttendance(this.session, this.selectedSection.id, this.dateAttendance);
@@ -163,11 +173,49 @@ export class AttendanceComponent implements OnInit {
 	  .catch(error => this.error = error);
   }
 
+  noAbsentees() {
+  	let attendance:Attendance = new Attendance();
+  	attendance.id = 0;
+  	attendance.sectionId = this.selectedSection.id;
+  	attendance.type = this.selectedClass.attendanceType;
+  	if(this.selectedClass.attendanceType == "Daily") {
+  		attendance.session = 0;	
+  	} else {
+  		attendance.session = this.session;
+  	}
+  	attendance.dateAttendance = this.dateAttendance;
+  	attendance.typeOfLeave = 'NA';
+  	this.attendanceService
+  		.noAbsentees(attendance)
+  		.then(returnedAttendance => {
+  			this.markedAttendances = [];
+			this.markedAttendances[0] = returnedAttendance;
+			this.checkNoAbsentees();
+	  	})
+  		.catch(error => this.error = error)
+  }
+
+  clearAttendance() {
+  	let attendance:Attendance = new Attendance();
+  	attendance.sectionId = this.selectedSection.id;
+  	attendance.type = this.selectedClass.attendanceType;
+  	if(this.selectedClass.attendanceType == "Daily") {
+  		attendance.session = 0;	
+  	} else {
+  		attendance.session = this.session;
+  	}
+  	attendance.dateAttendance = this.dateAttendance;
+  	this.attendanceService
+  		.deleteWhole(attendance)
+  		.catch(error => this.error = error)
+  }
+
   getMarkedAttendance(sectionId: number, date: Date) {
 	this.attendanceService
 	  .dailyAttendanceMarked(sectionId, date)
 	  .then(attendances => {
 		this.markedAttendances = attendances;
+		this.checkNoAbsentees();
 	  })
 	  .catch(error => this.error = error)
   }
@@ -186,6 +234,7 @@ export class AttendanceComponent implements OnInit {
 	  .sessionAttendanceMarked(session, sectionId, date)
 	  .then(attendances => {
 		this.markedAttendances = attendances;
+		this.checkNoAbsentees();
 	  })
 	  .catch(error => this.error = error)
   }
@@ -197,6 +246,12 @@ export class AttendanceComponent implements OnInit {
 		this.unmarkedAttendances = attendances;
 	  })
 	  .catch(error => this.error = error)
+  }
+
+  checkNoAbsentees() {
+  	if(this.markedAttendances.length == 1 && this.markedAttendances[0].typeOfLeave == 'NA') {
+  		this.noAbsentee = "No Absentees"
+  	}
   }
 
 }

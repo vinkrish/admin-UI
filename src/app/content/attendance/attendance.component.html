@@ -45,6 +45,10 @@
 <br>
 <md-toolbar color="primary">Marked Attendance</md-toolbar>
 <br>
+<select [(ngModel)]="noAbsentee">
+    <option *ngFor="let noAbsenteesType of noAbsenteesTypes" [value]="noAbsenteesType.type">{{noAbsenteesType.type}}</option>
+ </select>
+<button *ngIf="markedAttendances?.length == 0" class="btn btn-normal btn-md" (click)="noAbsentees()">No Absentees</button>
 <div class="col-md-8">
     <table class="table table-bordered table-striped table-sm">
         <caption></caption>
