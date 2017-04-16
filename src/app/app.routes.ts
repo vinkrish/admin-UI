@@ -2,9 +2,11 @@ import { RouterModule, Routes }         from '@angular/router';
 import { ModuleWithProviders }          from '@angular/core';
 import { LoggedInGuard }                from './login/logged-in.guard';
 import { LoginComponent }               from './login/credentials.component';
+import { SchoolComponent }              from './admin/school.component';
 import { DashboardComponent }           from './dashboard/dashboard.component';
 import { ExamDashboardComponent }       from './exam-dashboard/exam-dashboard.component';
 import { CceDashboardComponent }        from './cce-dashboard/cce-dashboard.component';
+import { schoolRoutes }                 from './admin/school.routes';
 import { dashboardRoutes }              from './dashboard/dashboard.routes';
 import { examDashboardRoutes }          from './exam-dashboard/exam-dashboard.routes';
 import { cceDashboardRoutes }           from './cce-dashboard/cce-dashboard.routes';
@@ -18,6 +20,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'admin',
+    component: SchoolComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'dashboard',
@@ -34,6 +41,7 @@ const routes: Routes = [
     component: CceDashboardComponent,
     canActivate: [LoggedInGuard]
   },
+  ...schoolRoutes,
   ...dashboardRoutes,
   ...examDashboardRoutes,
   ...cceDashboardRoutes

@@ -31,6 +31,10 @@ export class HeaderComponent implements OnInit {
     this.loginSub.unsubscribe();
   }
 
+  admin() {
+    this.router.navigate(['/admin']);
+  }
+
   logout() {
     this.loginService.logout();
     this.hasLoggedIn = this.loginService.isLoggedIn();

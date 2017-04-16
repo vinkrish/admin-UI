@@ -37,6 +37,7 @@ export class ClassEditComponent implements OnInit, OnDestroy {
         this.navigated = false;
         this.clas = new Clas();
         this.clas.attendanceType = this.attendanceTypes[0].type;
+        this.clas.teacherId = 0;
       }
     });
   }

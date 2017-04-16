@@ -1,1 +1,0 @@
-{"version":3,"file":"timetable.routes.js","sourceRoot":"","sources":["timetable.routes.ts"],"names":[],"mappings":";AACA,oCAAoC,uBAAuB,CAAC,CAAA;AAC5D,gCAAqC,6BAA6B,CAAC,CAAA;AAEtD,uBAAe,GAAW;IACrC;QACE,IAAI,EAAE,WAAW;QACjB,SAAS,EAAE,wCAAkB;QAC7B,WAAW,EAAE,CAAC,+BAAa,CAAC;KAC7B;CACF,CAAC"}

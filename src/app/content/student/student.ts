@@ -2,6 +2,7 @@ export class Student {
 	id : number;
 	studentName: string;
 	schoolId: number;
+	classId: number;
 	sectionId: number;
 	AadmissionNo: string;
 	rollNo: number;

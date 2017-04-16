@@ -53,6 +53,8 @@ import { TopicPrimaryEditComponent }	from '../app/content/cce-topic-primary/cce-
 import { AspectPrimaryComponent }   	from '../app/content/cce-aspect-primary/cce-aspect-primary.component';
 import { TopicGradeComponent }          from '../app/content/cce-topic-grade/cce-topic-grade.component';
 import { AspectGradeComponent }         from '../app/content/cce-aspect-grade/cce-aspect-grade.component';
+import { SchoolComponent } 			    from '../app/admin/school.component';
+import { SchoolEditComponent } 			from '../app/admin/school-edit.component';
 
 import { CookieService }          	from 'angular2-cookie/core';
 import { LoginService }				from './login/credentials.service';
@@ -90,6 +92,7 @@ import { TopicPrimaryService }    	from '../app/content/cce-topic-primary/cce-to
 import { AspectPrimaryService }    	from '../app/content/cce-aspect-primary/cce-aspect-primary.service';
 import { TopicGradeService }    	from '../app/content/cce-topic-grade/cce-topic-grade.service';
 import { AspectGradeService }    	from '../app/content/cce-aspect-grade/cce-aspect-grade.service';
+import { SchoolService } 			from '../app/admin/school.service';
 
 export const myComponents = [
 	AppComponent, 
@@ -146,7 +149,9 @@ export const myComponents = [
 	TopicPrimaryEditComponent,
 	AspectPrimaryComponent,
 	TopicGradeComponent,
-	AspectGradeComponent
+	AspectGradeComponent,
+	SchoolComponent,
+	SchoolEditComponent
 ];
 
 export const myServices = [
@@ -185,5 +190,6 @@ export const myServices = [
     TopicPrimaryService,
     AspectPrimaryService,
     TopicGradeService,
-    AspectGradeService
+    AspectGradeService,
+    SchoolService
 ]
