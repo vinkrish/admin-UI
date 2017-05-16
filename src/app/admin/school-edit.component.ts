@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angu
 import { ActivatedRoute }    from '@angular/router';
 import { School }            from './school';
 import { SchoolService }     from './school.service';
+import { Service }           from './service';
 import { Teacher }           from '../content/teacher/teacher';
 import { TeacherService }    from '../content/teacher/teacher.service';
 
@@ -14,6 +15,7 @@ import { TeacherService }    from '../content/teacher/teacher.service';
 export class SchoolEditComponent implements OnInit, OnDestroy {
   teachers: Teacher[];
   school: School;
+  service: Service;
   @Output() close = new EventEmitter();
   error: any;
   sub: any;
@@ -34,6 +36,7 @@ export class SchoolEditComponent implements OnInit, OnDestroy {
         this.schoolService.getSchool(schoolId)
           .then(school => {
             this.school = school;
+            this.getService();
           });
       } else {
         this.navigated = false;
@@ -53,12 +56,32 @@ export class SchoolEditComponent implements OnInit, OnDestroy {
         .catch(error => this.error = error);
   }
 
+  getService() {
+    this.schoolService
+        .getService(this.school.id)
+        .then(service => this.service = service)
+        .catch(error => this.error = error); 
+  }
+
   save() {
     this.schoolService
       .save(this.school)
       .then(school => {
         this.school = school;
         this.goBack(school);
+      })
+      .catch(error => this.error = error);
+  }
+
+  onCheckedChange(newValue) {
+    this.service.isSms = newValue;
+  }
+
+  updateService() {
+    this.schoolService
+      .updateService(this.service)
+      .then(service => {
+        this.service = service;
       })
       .catch(error => this.error = error);
   }

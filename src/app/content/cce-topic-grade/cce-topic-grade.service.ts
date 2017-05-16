@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { CceTopicGrade }      from './cce-topic-grade';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TopicGradeService {
-  private topicGradeUrl = 'http://localhost:8080/guldu/webapi/ccetopicgrade';
+  private topicGradeUrl = GlobalConstant.BASE_API_URL + 'ccetopicgrade';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

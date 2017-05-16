@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { CceSectionHeading }  from './cce-section-heading';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SectionHeadingService {
-  private sectionHeadingUrl = 'http://localhost:8080/guldu/webapi/ccesectionheading';
+  private sectionHeadingUrl = GlobalConstant.BASE_API_URL + 'ccesectionheading';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

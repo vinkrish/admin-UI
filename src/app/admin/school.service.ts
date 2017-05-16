@@ -2,11 +2,14 @@ import { Injectable }     from '@angular/core';
 import { Headers, Http }  from '@angular/http';
 import { CookieService }  from 'angular2-cookie/core';
 import { School }         from './school';
+import { Service }        from './service';
+import { GlobalConstant } from '../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SchoolService {
-  private schoolUrl = 'http://localhost:8080/guldu/webapi/school';
+  private schoolUrl = GlobalConstant.BASE_API_URL + 'school';
+  private serviceUrl = GlobalConstant.BASE_API_URL + 'service';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {
@@ -29,6 +32,23 @@ export class SchoolService {
       .get(url, { headers: this.headers, body: '' })
       .toPromise()
       .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getService(schoolId: number) {
+    let url = `${this.serviceUrl}/school/${schoolId}`;
+    return this.http
+      .get(url, { headers: this.headers, body: '' })
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  public updateService(service: Service) {
+    return this.http
+      .put(this.serviceUrl, JSON.stringify(service), { headers: this.headers })
+      .toPromise()
+      .then(() => service)
       .catch(this.handleError);
   }
 

@@ -2,15 +2,16 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { CookieService } from 'angular2-cookie/core';
 import { Attendance }    from './attendance';
+import { GlobalConstant }from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AttendanceService {
-  private attendanceUrl = 'http://localhost:8080/guldu/webapi/attendance';
-  private dailyMarkedUrl = 'http://localhost:8080/guldu/webapi/attendance/daily/marked';
-  private dailyUnmarkedUrl = 'http://localhost:8080/guldu/webapi/attendance/daily/unmarked';
-  private sessionMarkedUrl = 'http://localhost:8080/guldu/webapi/attendance/session/marked';
-  private sessionUnmarkedUrl = 'http://localhost:8080/guldu/webapi/attendance/session/unmarked';
+  private attendanceUrl = GlobalConstant.BASE_API_URL + 'attendance';
+  private dailyMarkedUrl = GlobalConstant.BASE_API_URL + 'attendance/daily/marked';
+  private dailyUnmarkedUrl = GlobalConstant.BASE_API_URL + 'attendance/daily/unmarked';
+  private sessionMarkedUrl = GlobalConstant.BASE_API_URL + 'attendance/session/marked';
+  private sessionUnmarkedUrl = GlobalConstant.BASE_API_URL + 'attendance/session/unmarked';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

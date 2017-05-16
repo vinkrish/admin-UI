@@ -2,11 +2,12 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { CookieService } from 'angular2-cookie/core';
 import { Homework }      from './homework';
+import { GlobalConstant }from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HomeworkService {
-  private homeworkUrl = 'http://localhost:8080/guldu/webapi/homework';
+  private homeworkUrl = GlobalConstant.BASE_API_URL + 'homework';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {
@@ -49,7 +50,7 @@ export class HomeworkService {
   private put(homework: Homework) {
     let url = `${this.homeworkUrl}/${homework.id}`;
     return this.http
-      .put(url, JSON.stringify(homework), { headers: this.headers })
+      .put(this.homeworkUrl, JSON.stringify(homework), { headers: this.headers })
       .toPromise()
       .then(() => homework)
       .catch(this.handleError);

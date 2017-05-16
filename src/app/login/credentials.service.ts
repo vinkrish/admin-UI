@@ -5,13 +5,14 @@ import { AuthResponse }             from './auth-response';
 import { CookieService }            from 'angular2-cookie/core';
 import { Observable }               from 'rxjs/Observable';
 import { BehaviorSubject }          from 'rxjs/BehaviorSubject'
+import { GlobalConstant }           from '../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class LoginService {
   private loggedIn = false;
   private auth_response: AuthResponse;
-  private loginUrl = 'http://localhost:8080/guldu/webapi/login';
+  private loginUrl = GlobalConstant.BASE_API_URL + 'login';
   private isLoggedInSubject: BehaviorSubject<boolean>;
 
   constructor(
@@ -66,7 +67,6 @@ export class LoginService {
   }
 
   logout() {
-    //localStorage.removeItem('auth_token');
     this.cookieService.put("isLoggedIn", "" + false);
     this.cookieService.put("auth_token", "");
     this.isLoggedInSubject.next(this.checkIsLoggedIn());

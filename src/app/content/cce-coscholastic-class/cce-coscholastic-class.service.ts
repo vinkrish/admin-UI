@@ -2,11 +2,12 @@ import { Injectable }            from '@angular/core';
 import { Headers, Http }         from '@angular/http';
 import { CookieService }         from 'angular2-cookie/core';
 import { CceCoscholasticClass }  from './cce-coscholastic-class';
+import { GlobalConstant }        from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CceCoschClassService {
-  private cccUrl = 'http://localhost:8080/guldu/webapi/ccecoscholasticclass';
+  private cccUrl = GlobalConstant.BASE_API_URL + 'ccecoscholasticclass';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

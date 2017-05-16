@@ -2,11 +2,12 @@ import { Injectable }     from '@angular/core';
 import { Headers, Http }  from '@angular/http';
 import { CookieService }  from 'angular2-cookie/core';
 import { Sliptest }       from './sliptest';
+import { GlobalConstant } from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SliptestService {
-  private sliptestUrl = 'http://localhost:8080/guldu/webapi/sliptest';
+  private sliptestUrl = GlobalConstant.BASE_API_URL + 'sliptest';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

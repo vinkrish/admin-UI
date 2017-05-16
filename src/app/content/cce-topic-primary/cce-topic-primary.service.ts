@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { CceTopicPrimary }    from './cce-topic-primary';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TopicPrimaryService {
-  private topicPrimaryUrl = 'http://localhost:8080/guldu/webapi/ccetopicprimary';
+  private topicPrimaryUrl = GlobalConstant.BASE_API_URL + 'ccetopicprimary';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

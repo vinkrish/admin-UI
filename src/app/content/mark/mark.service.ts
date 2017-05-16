@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { Mark }	              from './mark';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MarkService {
-  private markUrl = 'http://localhost:8080/guldu/webapi/mark';
+  private markUrl = GlobalConstant.BASE_API_URL + 'mark';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

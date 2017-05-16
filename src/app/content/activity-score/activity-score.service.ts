@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { ActivityScore }	    from './activity-score';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ActivityScoreService {
-  private scoreUrl = 'http://localhost:8080/guldu/webapi/activityscore';
+  private scoreUrl = GlobalConstant.BASE_API_URL + 'activityscore';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

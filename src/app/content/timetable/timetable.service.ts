@@ -2,11 +2,12 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { CookieService } from 'angular2-cookie/core';
 import { Timetable }     from './timetable';
+import { GlobalConstant }from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TimetableService {
-  private timetableUrl = 'http://localhost:8080/guldu/webapi/timetable';
+  private timetableUrl = GlobalConstant.BASE_API_URL + 'timetable';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

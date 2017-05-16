@@ -9,11 +9,12 @@ import 'hammerjs';
 import { routing } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { UserDropdownDirective } from './shared/header/user-dropdown.directive';
 import { myComponents } from './external.module';
 import { myServices } from './external.module';
 
 @NgModule({
-  declarations: [...myComponents],
+  declarations: [...myComponents, UserDropdownDirective],
   imports: [
     routing,
     BrowserModule,

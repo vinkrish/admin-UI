@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { CceAspectPrimary }   from './cce-aspect-primary';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AspectPrimaryService {
-  private aspectPrimaryUrl = 'http://localhost:8080/guldu/webapi/cceaspectprimary';
+  private aspectPrimaryUrl = GlobalConstant.BASE_API_URL + 'cceaspectprimary';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

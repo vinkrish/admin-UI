@@ -111,4 +111,65 @@
         <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
     <br/>
+    <div *ngIf="service">
+    <form (ngSubmit)="updateService()" #serviceform="ngForm">
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isMessage" [(ngModel)]="service.isMessage">
+	          Allow Message
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isSms" [(ngModel)]="service.isSms" (ngModelChange)="onCheckedChange(service.isSms)">
+	          Allow SMS
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isChat" [(ngModel)]="service.isChat" >
+	          Allow Chat
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isAttendance" [(ngModel)]="service.isAttendance">
+	          Enable Attendance
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isAttSms" [(ngModel)]="service.isAttendanceSms">
+	          Allow Attendance SMS
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isHomework" [(ngModel)]="service.isHomework">
+	          Enable Homework
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isHwSms" [(ngModel)]="service.isHomeworkSms">
+	          Allow Homework SMS
+	        </label>
+	      	</div>
+    	</div>
+    	<button type="submit" class="btn btn-success btn-md">Update</button>
+    </form>
+    </div>
 </div>

@@ -3,12 +3,13 @@ import { Headers, Http }  from '@angular/http';
 import { CookieService }  from 'angular2-cookie/core';
 import { Clas }           from '../class/clas';
 import { SubjectTeacher } from './subject-teacher';
+import { GlobalConstant } from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SubjectTeacherService {
-  private subjectTeacherUrl = 'http://localhost:8080/guldu/webapi/subjectteacher';
-  private sharedUrl = 'http://localhost:8080/guldu/webapi/shared/subjectteacher';
+  private subjectTeacherUrl = GlobalConstant.BASE_API_URL + 'subjectteacher';
+  private sharedUrl = GlobalConstant.BASE_API_URL + 'subjectteacher';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

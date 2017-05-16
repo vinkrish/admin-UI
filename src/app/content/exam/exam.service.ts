@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { Exam }               from './exam';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ExamService {
-  private examUrl = 'http://localhost:8080/guldu/webapi/exam';
+  private examUrl = GlobalConstant.BASE_API_URL + 'exam';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {

@@ -2,11 +2,12 @@ import { Injectable }         from '@angular/core';
 import { Headers, Http }      from '@angular/http';
 import { CookieService }      from 'angular2-cookie/core';
 import { GradeClassWise }     from './grade-class-wise';
+import { GlobalConstant }     from '../../shared/global.const';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class GradeClassWiseService {
-  private gcwUrl = 'http://localhost:8080/guldu/webapi/gradeclasswise';
+  private gcwUrl = GlobalConstant.BASE_API_URL + 'gradeclasswise';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {
