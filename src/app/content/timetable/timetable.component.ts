@@ -95,9 +95,17 @@ export class TimetableComponent {
 	  .catch(error => this.error = error);
   }
 
-  daySelected(day) {
+  daySelected(day: string) {
 	this.selectedTimetable = [];
-	this.selectedTimetable.push(day);
+	this.selectedDay = day;
+	for (let timetab of this.timetables) {
+	  if (timetab.dayOfWeek == day) {
+		this.selectedTimetable.push(timetab);
+	  }
+	}
+	if(day == "") {
+		this.isNewTimetable = false;
+	}
   }
 
   getSubjects(id: number) {
@@ -158,7 +166,7 @@ export class TimetableComponent {
   }
 
   enableNewTimetable() {
-	if (this.selectedDay != "") {
+	if (this.selectedDay !== "") {
 	  this.isNewTimetable = true;
 	}
   }

@@ -8,4 +8,5 @@ export class Service {
 	isAttendanceSms: boolean;
 	isHomework: boolean;
 	isHomeworkSms: boolean;
+	isTimetable: boolean;
 }
