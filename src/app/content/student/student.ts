@@ -1,6 +1,6 @@
 export class Student {
 	id : number;
-	studentName: string;
+	Name: string;
 	schoolId: number;
 	classId: number;
 	sectionId: number;
