@@ -1,6 +1,6 @@
 export class Teacher {
 	id: number;
-	Name: string;
+	name: string;
 	image: string;
 	username: string;
 	password: string;

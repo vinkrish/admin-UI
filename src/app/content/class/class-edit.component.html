@@ -13,6 +13,13 @@
                     </md-option>
                 </md-select>
                 <p></p>
+                <p></p>
+                <md-select style="width: 50%" placeholder="Teacher" name="class_teacher" required [(ngModel)]="clas.teacherId">
+                    <md-option *ngFor="let teacher of teachers" [value]="teacher.id">
+                        {{teacher.name}}
+                    </md-option>
+                </md-select>
+                <p></p>
                 <p>
                     <button md-raised-button color="accent" type="button" (click)="goBack()">Back</button>
                     <button md-raised-button color="primary" type="submit">Save</button>

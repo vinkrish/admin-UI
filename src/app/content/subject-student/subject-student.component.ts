@@ -119,7 +119,7 @@ export class SubjectStudentComponent implements OnInit {
           this.ssList.push(new SubjectStudent(
             this.students[i].rollNo, 
             this.students[i].id, 
-            this.students[i].studentName));
+            this.students[i].name));
         }
       })
       .catch(error => this.error = error);

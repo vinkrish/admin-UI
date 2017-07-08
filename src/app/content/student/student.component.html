@@ -31,7 +31,7 @@
         <tbody>
             <tr *ngFor="let student of students" (click)="onSelect(student)" [class.selected]="student === selectedStudent">
                 <th scope="row">{{student.rollNo}}</th>
-                <td>{{student.Name}}</td>
+                <td>{{student.name}}</td>
                 <td>{{student.fatherName}}</td>
                 <td>{{student.motherName}}</td>
                 <td>{{student.mobile1}}</td>

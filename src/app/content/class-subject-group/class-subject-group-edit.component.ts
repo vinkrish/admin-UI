@@ -54,6 +54,7 @@ export class ClassSubjectGroupEditComponent implements OnInit, OnDestroy {
   subjectGroupSelected(subjectId) {
     for (var i = 0; i < this.subjectGroups.length; i++) {
       if (this.subjectGroups[i].id == subjectId) {
+        this.classSubjectGroup.subjectGroupId = this.subjectGroups[i].id;
         this.classSubjectGroup.subjectGroupName = this.subjectGroups[i].subjectGroupName;
       }
     }

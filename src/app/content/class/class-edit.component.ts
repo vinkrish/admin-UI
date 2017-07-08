@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angu
 import { ActivatedRoute } from '@angular/router';
 import { Clas }           from './clas';
 import { AttendanceType } from '../../shared/component/attendance-type';
+import { Teacher }         from '../teacher/teacher';
+import { TeacherService }  from '../teacher/teacher.service';
 import { ClassService }   from './class.service';
 
 @Component({
@@ -11,6 +13,7 @@ import { ClassService }   from './class.service';
 })
 
 export class ClassEditComponent implements OnInit, OnDestroy {
+  teachers: Teacher[];
   clas: Clas;
   @Output() close = new EventEmitter();
   attendanceTypes = [
@@ -24,9 +27,12 @@ export class ClassEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private classService: ClassService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private teacherService: TeacherService) {
+  }
 
   ngOnInit() {
+    this.getTeachers();
     this.sub = this.route.params.subscribe(params => {
       if (params['id'] !== undefined) {
         let id = +params['id'];
@@ -44,6 +50,13 @@ export class ClassEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  getTeachers() {
+    this.teacherService
+        .getTeachers()
+        .then(teachers => this.teachers = teachers)
+        .catch(error => this.error = error);
   }
 
   save() {

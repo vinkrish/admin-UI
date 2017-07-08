@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class SubjectTeacherService {
   private subjectTeacherUrl = GlobalConstant.BASE_API_URL + 'subjectteacher';
-  private sharedUrl = GlobalConstant.BASE_API_URL + 'subjectteacher';
+  private sharedUrl = GlobalConstant.BASE_API_URL + 'shared/subjectteacher';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {
