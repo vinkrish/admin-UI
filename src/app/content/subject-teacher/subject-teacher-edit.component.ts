@@ -55,8 +55,17 @@ export class SubjectTeacherEditComponent implements OnInit, OnDestroy {
       .catch(error => this.error = error);
   }
   
-  teacherSelected(subjectTeacher) {
+  teacherSelected2(subjectTeacher) {
     this.subjectTeacher = subjectTeacher;
+  }
+
+  teacherSelected(teacherId) {
+    for (var i = 0; i < this.teachers.length; i++) {
+      if (this.teachers[i].id == teacherId) {
+        this.subjectTeacher.teacherId = this.teachers[i].id;
+        this.subjectTeacher.teacherName = this.teachers[i].name;
+      }
+    }
   }
 
   ngOnDestroy() {
