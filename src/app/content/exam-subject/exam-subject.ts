@@ -6,6 +6,7 @@ export class ExamSubject {
 	type: string;
 	maximumMark: number;
 	failMark: number;
+	calculation: number;
 	percentage: number;
 	orders: number;
 }

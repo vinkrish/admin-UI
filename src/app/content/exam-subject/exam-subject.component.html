@@ -30,8 +30,10 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Type</th>
                 <th>Max Mark</th>
                 <th>Fail Mark</th>
+                <th>Calculation</th>
                 <th>Percentage</th>
                 <th></th>
                 <th></th>
@@ -41,10 +43,16 @@
             <tr *ngFor="let exmSubject of examSubjects" (click)="onSelect(exmSubject)" [class.selected]="exmSubject === selectedExamSubject">
                 <td>{{exmSubject.subjectName}}</td>
                 <td>
+                    <input [(ngModel)]="exmSubject.type" placeholder="Type" />
+                </td>
+                <td>
                     <input [(ngModel)]="exmSubject.maximumMark" placeholder="Max Mark" />
                 </td>
                 <td>
                     <input [(ngModel)]="exmSubject.failMark" placeholder="Fail Mark" />
+                </td>
+                <td>
+                    <input [(ngModel)]="exmSubject.calculation" placeholder="Calculation" />
                 </td>
                 <td>
                     <input [(ngModel)]="exmSubject.percentage" placeholder="%" />
@@ -85,12 +93,20 @@
         {{selectedEsg.subjectGroupName}}
     </div>
     <div class="form-group row">
+        <label class="col-md-2">Type: </label>
+        <input [(ngModel)]="examSubject.type" placeholder="Type" />
+    </div>
+    <div class="form-group row">
         <label class="col-md-2">Maximum Mark: </label>
         <input [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
     </div>
     <div class="form-group row">
         <label class="col-md-2">Fail Mark: </label>
         <input [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2">Calculation: </label>
+        <input [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
     </div>
     <div class="form-group row">
         <label class="col-md-2">Percentage: </label>
@@ -119,12 +135,20 @@
         {{selectedExam.examName}}
     </div>
     <div class="form-group row">
+        <label class="col-md-2">Type: </label>
+        <input [(ngModel)]="examSubject.type" placeholder="Type" />
+    </div>
+    <div class="form-group row">
         <label class="col-md-2">Maximum Mark: </label>
         <input [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
     </div>
     <div class="form-group row">
         <label class="col-md-2">Fail Mark: </label>
         <input [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2">Calculation: </label>
+        <input [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
     </div>
     <div class="form-group row">
         <label class="col-md-2">Percentage: </label>

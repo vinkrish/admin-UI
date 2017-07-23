@@ -177,6 +177,7 @@ export class ExamSubjectComponent implements OnInit {
   subjectSelected(subjectId) {
     for (var i = 0; i < this.subjectGroupSubjects.length; i++) {
       if (this.subjectGroupSubjects[i].subjectId == subjectId) {
+        this.examSubject.subjectId = subjectId;
         this.examSubject.subjectName = this.subjectGroupSubjects[i].subjectName;
       }
     }
@@ -185,6 +186,7 @@ export class ExamSubjectComponent implements OnInit {
   partitionSubjectSelected(subjectId) {
     for (var i = 0; i < this.partitionSubjects.length; i++) {
       if (this.partitionSubjects[i].id == subjectId) {
+        this.examSubject.subjectId = subjectId;
         this.examSubject.subjectName = this.partitionSubjects[i].subjectName;
       }
     }

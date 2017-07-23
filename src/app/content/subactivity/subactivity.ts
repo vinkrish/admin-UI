@@ -5,7 +5,6 @@ export class SubActivity {
 	type: string;
 	maximumMark: number;
 	weightage: number;
-	calculation: number;
 	subActivityAvg: number;
 	orders: number;
 }

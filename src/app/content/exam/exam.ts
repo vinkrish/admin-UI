@@ -4,5 +4,6 @@ export class Exam{
 	classId: number;
 	term: number;
 	type: string;
+	calculation: number;
 	percentage: number;
 }

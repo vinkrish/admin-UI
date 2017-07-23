@@ -47,9 +47,9 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Type</th>
                 <th>Max Mark</th>
                 <th>Weightage</th>
-                <th>Calculation</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -60,13 +60,13 @@
                     <input [(ngModel)]="subact.subActivityName"/>
                 </td>
                 <td>
+                    <input [(ngModel)]="subact.type"/>
+                </td>
+                <td>
                     <input [(ngModel)]="subact.maximumMark"/>
                 </td>
                 <td>
                     <input [(ngModel)]="subact.weightage"/>
-                </td>
-                <td>
-                    <input [(ngModel)]="subact.calculation"/>
                 </td>
                 <td>
                     <button type="button" md-button color="primary" (click)="update(subact, $event)">
@@ -125,25 +125,25 @@
         <div class="form-group row">
             <label for="name" class="col-md-1">Name</label>
             <div class="col-md-4">
-                <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="subActivity.subActivityName">
+                <input type="text" class="form-control" name="name" required [(ngModel)]="subActivity.subActivityName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="type" class="col-md-1">Type</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="type" required [(ngModel)]="subActivity.type">
             </div>
         </div>
         <div class="form-group row">
             <label for="maxMark" class="col-md-1">Maximum Mark</label>
             <div class="col-md-4">
-                <input type="number" class="form-control" id="maxMark" name="maxMark" required [(ngModel)]="subActivity.maximumMark">
+                <input type="number" class="form-control" name="maxMark" required [(ngModel)]="subActivity.maximumMark">
             </div>
         </div>
         <div class="form-group row">
             <label for="weightage" class="col-md-1">Weightage</label>
             <div class="col-md-4">
-                <input type="number" class="form-control" id="weightage" name="weightage" required [(ngModel)]="subActivity.weightage">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="calc" class="col-md-1">Calculation</label>
-            <div class="col-md-4">
-                <input type="number" class="form-control" id="calc" name="calc" required [(ngModel)]="subActivity.calculation">
+                <input type="number" class="form-control" name="weightage" required [(ngModel)]="subActivity.weightage">
             </div>
         </div>
         <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>

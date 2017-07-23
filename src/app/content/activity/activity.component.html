@@ -39,6 +39,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Type</th>
                 <th>Max Mark</th>
                 <th>Weightage</th>
                 <th>Calculation</th>
@@ -50,6 +51,9 @@
             <tr *ngFor="let act of activities" (click)="onSelect(act)" [class.selected]="act === selectedActivity">
                 <td>
                     <input [(ngModel)]="act.activityName"/>
+                </td>
+                <td>
+                    <input [(ngModel)]="act.type"/>
                 </td>
                 <td>
                     <input [(ngModel)]="act.maximumMark"/>
@@ -112,6 +116,12 @@
             <label for="name" class="col-md-1">Name:</label>
             <div class="col-md-4">
                 <input type="text" class="form-control" name="name" required [(ngModel)]="activity.activityName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="type" class="col-md-1">Type:</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="type" required [(ngModel)]="activity.type">
             </div>
         </div>
         <div class="form-group row">
